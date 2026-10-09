@@ -440,132 +440,163 @@
 </section>
 
 <!-- report form  -->
+
 <section class="section section--tint" id="report" aria-labelledby="report-head">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head report-section-head">
       <p class="eyebrow">रिपोर्ट</p>
       <h2 id="report-head">सभा की रिपोर्ट भेजें</h2>
       <p>सभा हो जाने के बाद यह फ़ॉर्म भरें। इससे आपके गाँव का काम पूरे राज्य के डैशबोर्ड पर दर्ज होगा।</p>
     </div>
 
-    <form class="form" data-demo="sabha-done">
-      <noscript>
-        <p class="form-note"><strong>यह फ़ॉर्म भेजने के लिए जावास्क्रिप्ट चालू होनी चाहिए।</strong> यदि यह संदेश दिख रहा है तो आपकी जानकारी सहेजी नहीं जाएगी। कृपया ब्राउज़र में जावास्क्रिप्ट चालू करें, या <a href="mailto:info@loksankalp.org">info@loksankalp.org</a> पर भेज दें।</p>
-      </noscript>
-      <p hidden aria-hidden="true">
-        <label>यह खाली छोड़ें
-          <input type="text" name="website" tabindex="-1" autocomplete="off">
-        </label>
-      </p>
-      <div class="field">
-        <label for="gaon">गाँव/शहर का नाम <span aria-hidden="true">*</span></label>
-        <input type="text" id="gaon" name="gaon" required>
+    <div class="report-card">
+      <div class="report-card-top">
+        <span class="report-badge">लोकसंकल्प अभियान</span>
+        <h3>सभा की जानकारी दर्ज करें</h3>
+        <p>सभा का विवरण भरें और रिपोर्ट भेजें।</p>
       </div>
 
-      <div class="field">
-        <label for="block">ब्लॉक / तहसील का नाम</label>
-        <input type="text" id="block" name="block" autocomplete="off">
-      </div>
+      <form class="form report-form" data-demo="sabha-done">
+        <noscript>
+          <p class="form-note">
+            <strong>यह फ़ॉर्म भेजने के लिए JavaScript चालू होनी चाहिए।</strong>
+            यदि यह संदेश दिख रहा है तो आपकी जानकारी सहेजी नहीं जाएगी।
+            कृपया JavaScript चालू करें या
+            <a href="mailto:info@loksankalp.org">info@loksankalp.org</a>
+            पर संपर्क करें।
+          </p>
+        </noscript>
 
-      <div class="field">
-        <label for="jila">जिला <span aria-hidden="true">*</span></label>
-        <select translate="no" id="jila" name="jila" required>
-          <option value="">जिला चुनें</option>
-          <option>अजमेर</option>
-          <option>अलवर</option>
-          <option>उदयपुर</option>
-          <option>करौली</option>
-          <option>कोटपूतली-बहरोड़</option>
-          <option>कोटा</option>
-          <option>खैरथल-तिजारा</option>
-          <option>चित्तौड़गढ़</option>
-          <option>चूरू</option>
-          <option>जयपुर</option>
-          <option>जालौर</option>
-          <option>जैसलमेर</option>
-          <option>जोधपुर</option>
-          <option>झालावाड़</option>
-          <option>झुंझुनू</option>
-          <option>टोंक</option>
-          <option>डीग</option>
-          <option>डीडवाना-कुचामन</option>
-          <option>डूंगरपुर</option>
-          <option>दौसा</option>
-          <option>धौलपुर</option>
-          <option>नागौर</option>
-          <option>पाली</option>
-          <option>प्रतापगढ़</option>
-          <option>फलौदी</option>
-          <option>बांसवाड़ा</option>
-          <option>बाड़मेर</option>
-          <option>बारां</option>
-          <option>बालोतरा</option>
-          <option>बीकानेर</option>
-          <option>बूंदी</option>
-          <option>ब्यावर</option>
-          <option>भरतपुर</option>
-          <option>भीलवाड़ा</option>
-          <option>राजसमंद</option>
-          <option>श्रीगंगानगर</option>
-          <option>सलूम्बर</option>
-          <option>सवाई माधोपुर</option>
-          <option>सिरोही</option>
-          <option>सीकर</option>
-          <option>हनुमानगढ़</option>
-          <option>अन्य</option>
-        </select>
-      </div>
+        <p hidden aria-hidden="true">
+          <label>यह खाली छोड़ें
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+        </p>
 
-      <div class="field">
-        <label for="vidyalaya">विद्यालय/महाविद्यालय का नाम <span aria-hidden="true">*</span></label>
-        <input type="text" id="vidyalaya" name="vidyalaya" autocomplete="off" required
-               aria-describedby="vidyalaya-hint">
-        <span class="hint" id="vidyalaya-hint">जो विद्यालय अथवा महाविद्यालय इस सभा से जुड़ा, उसका पूरा नाम।
-           यदि कोई नहीं जुड़ा तो <b>लागू नहीं</b> लिखें।</span>
-      </div>
+        <div class="report-fields">
+          <div class="field">
+            <label for="gaon">गाँव/शहर का नाम <span aria-hidden="true" style="color: red;">*</span></label>
+            <input type="text" id="gaon" name="gaon" required placeholder="गाँव या शहर का नाम">
+          </div>
 
-      <div class="field">
-        <label for="tithi">सभा की तिथि <span aria-hidden="true">*</span></label>
-        <input type="date" id="tithi" name="tithi" required>
-      </div>
+          <div class="field">
+            <label for="block">ब्लॉक / तहसील का नाम</label>
+            <input type="text" id="block" name="block" autocomplete="off" placeholder="ब्लॉक या तहसील">
+          </div>
 
-      <div class="field">
-        <label for="sankhya">प्रतिभागियों की संख्या <span aria-hidden="true">*</span></label>
-        <input type="number" id="sankhya" name="sankhya" min="0" inputmode="numeric" required>
-      </div>
+          <div class="field">
+            <label for="jila">जिला <span aria-hidden="true" style="color: red;">*</span></label>
+            <select translate="no" id="jila" name="jila" required>
+              <option value="">जिला चुनें</option>
+              <option>अजमेर</option>
+              <option>अलवर</option>
+              <option>उदयपुर</option>
+              <option>करौली</option>
+              <option>कोटपूतली-बहरोड़</option>
+              <option>कोटा</option>
+              <option>खैरथल-तिजारा</option>
+              <option>चित्तौड़गढ़</option>
+              <option>चूरू</option>
+              <option>जयपुर</option>
+              <option>जालौर</option>
+              <option>जैसलमेर</option>
+              <option>जोधपुर</option>
+              <option>झालावाड़</option>
+              <option>झुंझुनू</option>
+              <option>टोंक</option>
+              <option>डीग</option>
+              <option>डीडवाना-कुचामन</option>
+              <option>डूंगरपुर</option>
+              <option>दौसा</option>
+              <option>धौलपुर</option>
+              <option>नागौर</option>
+              <option>पाली</option>
+              <option>प्रतापगढ़</option>
+              <option>फलौदी</option>
+              <option>बांसवाड़ा</option>
+              <option>बाड़मेर</option>
+              <option>बारां</option>
+              <option>बालोतरा</option>
+              <option>बीकानेर</option>
+              <option>बूंदी</option>
+              <option>ब्यावर</option>
+              <option>भरतपुर</option>
+              <option>भीलवाड़ा</option>
+              <option>राजसमंद</option>
+              <option>श्रीगंगानगर</option>
+              <option>सलूम्बर</option>
+              <option>सवाई माधोपुर</option>
+              <option>सिरोही</option>
+              <option>सीकर</option>
+              <option>हनुमानगढ़</option>
+              <option>अन्य</option>
+            </select>
+          </div>
 
-      <fieldset>
-        <legend>क्या समिति गठित हुई? <span aria-hidden="true">*</span></legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="samiti" value="हाँ" required>हाँ</label>
-          <label class="choice"><input type="radio" name="samiti" value="नहीं">नहीं</label>
+          <div class="field">
+            <label for="vidyalaya">विद्यालय/महाविद्यालय का नाम <span aria-hidden="true" style="color: red;">*</span></label>
+            <input
+              type="text"
+              id="vidyalaya"
+              name="vidyalaya"
+              autocomplete="off"
+              required
+              aria-describedby="vidyalaya-hint"
+              placeholder="संस्था का पूरा नाम"
+            >
+            <span class="hint" id="vidyalaya-hint">
+              जो विद्यालय अथवा महाविद्यालय इस सभा से जुड़ा, उसका पूरा नाम लिखें। यदि कोई नहीं जुड़ा तो लागू नहीं लिखें।
+            </span>
+          </div>
+
+          <div class="field">
+            <label for="tithi">सभा की तिथि <span aria-hidden="true" style="color: red;">*</span></label>
+            <input type="date" id="tithi" name="tithi" required>
+          </div>
+
+          <div class="field">
+            <label for="sankhya">प्रतिभागियों की संख्या <span aria-hidden="true" style="color: red;">*</span></label>
+            <input type="number" id="sankhya" name="sankhya" min="0" inputmode="numeric" required placeholder="कुल प्रतिभागी">
+          </div>
+
+          <fieldset class="report-fieldset">
+            <legend>क्या समिति गठित हुई? <span aria-hidden="true" style="color: red;">*</span></legend>
+          
+            <div class="choices">
+              <label class="choice"><input type="radio" name="samiti" value="हाँ" required>हाँ</label>
+              <label class="choice"><input type="radio" name="samiti" value="नहीं">नहीं</label>
+            </div>
+          </fieldset>
+
+          <div class="field report-full-width">
+            <label for="report-text">संक्षिप्त रिपोर्ट <span aria-hidden="true" style="color: red;">*</span></label>
+            <textarea id="report-text" name="report" aria-describedby="report-hint" required placeholder="सभा में क्या चर्चा हुई और क्या संकल्प लिया गया?"></textarea>
+            <span class="hint" id="report-hint">चार-पाँच पंक्तियाँ पर्याप्त हैं।</span>
+          </div>
+
+          <div class="field report-full-width">
+            <label for="photo">फोटो अपलोड <span aria-hidden="true" style="color: red;">*</span></label>
+            <input type="file" id="photo" name="photo" accept="image/*" multiple required aria-describedby="photo-hint">
+            <span class="hint" id="photo-hint">सभा की या सामूहिक संकल्प की एक या अधिक फोटो चुनें।</span>
+          </div>
         </div>
-      </fieldset>
 
-      <div class="field">
-        <label for="report-text">संक्षिप्त रिपोर्ट <span aria-hidden="true">*</span></label>
-        <textarea id="report-text" name="report" aria-describedby="report-hint" required></textarea>
-        <span class="hint" id="report-hint">चार-पाँच पंक्तियाँ पर्याप्त हैं। क्या चर्चा हुई और क्या संकल्प लिया गया।</span>
-      </div>
+        <div class="report-submit-area">
+          <button class="btn btn--primary btn--lg report-submit" type="submit">
+            <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-upload"></use></svg>
+            रिपोर्ट भेजें
+          </button>
+          <p class="form-note">
+            आपकी जानकारी कहाँ रहती है और कैसे हटवाई जा सकती है, यह
+            <a href="nijta.html">निजता</a> पृष्ठ पर लिखा है।
+          </p>
+        </div>
+      </form>
 
-      <div class="field">
-        <label for="photo">फोटो अपलोड <span aria-hidden="true">*</span></label>
-        <input type="file" id="photo" name="photo" accept="image/*" multiple required aria-describedby="photo-hint">
-        <span class="hint" id="photo-hint">सभा की फोटो, सामूहिक संकल्प की फोटो। एक साथ कई फोटो चुन सकते हैं।</span>
-      </div>
-
-      <p>
-        <button class="btn btn--primary btn--lg" type="submit">
-          <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-upload"></use></svg>रिपोर्ट भेजें
-        </button>
-      </p>
-        <p class="form-note">आपकी जानकारी कहाँ रहती है और कैसे हटवाई जा सकती है, यह <a href="nijta.html">निजता</a> पृष्ठ पर लिखा है।</p>
-    </form>
-
-    <!-- RESULT PANEL -->
-    <div id="sabha-done" hidden>
-      <div class="callout callout--green mt-2">
-        <p><strong>धन्यवाद!</strong> आपके गाँव की सभा की जानकारी हम तक पहुँच गई है। सत्यापन के बाद यह रिपोर्ट <a href="dashboard.html">डैशबोर्ड</a> पर दिखाई देगी।</p>
+      <div id="sabha-done" hidden>
+        <div class="callout callout--green mt-2">
+          <p><strong>धन्यवाद!</strong> आपके गाँव की सभा की जानकारी हम तक पहुँच गई है। सत्यापन के बाद यह रिपोर्ट <a href="dashboard.html">डैशबोर्ड</a> पर दिखाई देगी।</p>
+        </div>
       </div>
     </div>
   </div>
