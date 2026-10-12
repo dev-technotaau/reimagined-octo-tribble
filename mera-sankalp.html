@@ -256,7 +256,7 @@
                 <div class="sankalp-field">
                   <label for="mobile">
                     मोबाइल नंबर
-                    <span class="sankalp-hint-inline" style="color: red;">(वैकल्पिक। आपका नंबर गोपनीय रहेगा।)</span>
+                    <span class="sankalp-hint-inline" >(वैकल्पिक। आपका नंबर गोपनीय रहेगा।)</span>
                   </label>
 
                   <input
@@ -279,7 +279,7 @@
                 <span class="sankalp-step-number">02</span>
                 <div>
                   <h3>आपकी पहचान</h3>
-                  <p style="color: red;">आप अपना परिचय बताएं</p>
+                  <p >आप अपना परिचय बताएं</p>
                 </div>
               </div>
 
@@ -391,7 +391,7 @@
                 <span class="sankalp-step-number">03</span>
                 <div>
                   <h3>स्थान विवरण</h3>
-                  <p style="color: red;">आप कहाँ से हैं?</p>
+                  <p >आप कहाँ से हैं?</p>
                 </div>
               </div>
 
@@ -456,7 +456,7 @@
                <div class="sankalp-field">
   <label for="gaon">
     गाँव/शहर या विद्यालय का नाम
-    <span class="sankalp-hint-inline" style="color: red;">(वैकल्पिक जानकारी)</span>
+    <span class="sankalp-hint-inline" >(वैकल्पिक जानकारी)</span>
   </label>
 
   <input
@@ -521,8 +521,7 @@
                 src="assets/img/logo-mark.svg"
                 alt=""
                 width="64"
-                height="64"
-              >
+                height="64" >
 
               <p class="eyebrow">
                 डिजिटल प्रमाणपत्र
@@ -747,5 +746,134 @@
 
 <script src="js/config.js" defer></script>
 <script src="js/site.js" defer></script>
+
+
+<!-- केवल मेरा संकल्प प्रमाणपत्र: HTML डिज़ाइन से Print / Save as PDF -->
+<script>
+(function () {
+  // Document capture: पुराने download handler से पहले क्लिक पकड़ें।
+  document.addEventListener('click', function (event) {
+    var btn = event.target.closest('#sankalp-done [data-cert="download"]');
+    if (!btn) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    var scope = document.getElementById('sankalp-done');
+    var cert = scope && scope.querySelector('.sankalp-certificate');
+
+    if (!cert) {
+      alert('लोकसंकल्प प्रमाणपत्र नहीं मिला।');
+      return;
+    }
+
+    // Print window user के क्लिक के दौरान ही खोलें।
+    var win = window.open('', '_blank');
+
+    if (!win) {
+      alert('कृपया ब्राउज़र में Pop-ups की अनुमति दें।');
+      return;
+    }
+
+    var styles = Array.from(
+      document.querySelectorAll('link[rel="stylesheet"], style')
+    ).map(function (el) {
+      if (el.tagName.toLowerCase() === 'link') {
+        var href = el.getAttribute('href');
+        if (!href) return '';
+        return '<link rel="stylesheet" href="' +
+          new URL(href, location.href).href + '">';
+      }
+      return el.outerHTML;
+    }).join('\n');
+
+    // Relative images और fonts के paths सही रखने के लिए base URL।
+    var base = '<base href="' +
+      location.href.replace(/"/g, '&quot;') + '">';
+
+    win.document.open();
+    win.document.write(
+      '<!doctype html>' +
+      '<html lang="hi"><head>' +
+      '<meta charset="utf-8">' +
+      '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+      '<title>लोकसंकल्प प्रमाणपत्र</title>' +
+      base + styles +
+      '<style>' +
+      '@page{size:A4 portrait;margin:12mm}' +
+      'html,body{margin:0!important;padding:0!important;background:#fff!important}' +
+      'body{font-family:"Noto Sans Devanagari",sans-serif;padding:0!important}' +
+      '.sankalp-certificate{' +
+        'display:block!important;visibility:visible!important;' +
+        'width:100%!important;max-width:none!important;' +
+        'box-sizing:border-box!important;margin:0 auto!important;' +
+        'padding:25px!important;text-align:center!important;' +
+        'border:6px double #17307a!important;border-radius:10px;' +
+        'background:#fffdf5!important;break-inside:avoid;' +
+        'print-color-adjust:exact;-webkit-print-color-adjust:exact}' +
+      '.sankalp-certificate h3{margin:12px 0;font-size:26px}' +
+      '.sankalp-certificate .cert__mark{' +
+        'display:block;width:64px;height:64px;object-fit:contain;' +
+        'margin:0 auto 8px}' +
+      '.sankalp-certificate .sankalp-cert-name{' +
+        'display:inline-block!important;color:#245b38!important;' +
+        'font-size:30px!important;font-weight:700;' +
+        'padding:5px 20px;margin:12px 0;' +
+        'border-bottom:2px dotted #ccc}' +
+      '.sankalp-certificate .cert__motto{' +
+        'color:#a65c00!important;margin:16px auto 5px}' +
+      '.sankalp-certificate .cert__by{' +
+        'margin-top:14px;padding-top:10px;border-top:1px solid #ccc}' +
+      '.sankalp-certificate .cert__date{margin-top:10px}' +
+      '@media print{body{print-color-adjust:exact;-webkit-print-color-adjust:exact}}' +
+      '</style></head><body>' +
+      cert.outerHTML +
+      '</body></html>'
+    );
+    win.document.close();
+
+    // Images और fonts तैयार होने के बाद print खोलें।
+    var printed = false;
+
+    function openPrint() {
+      if (printed || win.closed) return;
+      printed = true;
+      win.focus();
+      win.print();
+    }
+
+    function waitForImages() {
+      var images = Array.from(win.document.images);
+      return Promise.all(images.map(function (img) {
+        if (img.complete) return Promise.resolve();
+        return new Promise(function (resolve) {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      }));
+    }
+
+    // Load event छूट जाने पर भी print खुले, इसलिए timeout fallback रखें।
+    var fallback = setTimeout(openPrint, 2500);
+
+    waitForImages().then(function () {
+      var fontsReady = win.document.fonts
+        ? win.document.fonts.ready
+        : Promise.resolve();
+
+      return Promise.resolve(fontsReady);
+    }).then(function () {
+      clearTimeout(fallback);
+      setTimeout(openPrint, 300);
+    }).catch(function () {
+      clearTimeout(fallback);
+      openPrint();
+    });
+
+  }, true);
+})();
+</script>
+
 </body>
 </html>

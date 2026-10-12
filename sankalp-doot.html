@@ -28,14 +28,11 @@
 <link rel="preconnect" href="https://script.google.com">
 <script src="js/config.js"></script>
 <script>
-/* The figures request takes a second or more to answer. js/site.js is deferred,
-   so waiting for it to start the request adds its download on top. Start it
-   here, while the head is still being parsed. */
 (function () {
   var u = (window.LOKSANKALP_FORM_ENDPOINT || '').trim();
   if (!u || !window.fetch) return;
   window.LOKSANKALP_STATS = fetch(u + '?stats=1').then(function (r) { return r.json(); });
-  window.LOKSANKALP_STATS.catch(function () {});   // handled in site.js
+  window.LOKSANKALP_STATS.catch(function () {});
 })();
 </script>
 <link rel="stylesheet" href="css/tokens.css">
@@ -100,10 +97,6 @@
 <!-- ================= आह्वान ================= -->
 <section class="section">
   <div class="wrap stack">
-    <!-- दांडी यात्रा, मार्च 1930। चौड़ी तस्वीर इसलिए कि इसका अर्थ क़तार में
-         है : आगे एक आदमी, पीछे वे लोग जो अपने-अपने गाँव से चलकर आए। खड़ी
-         कटाई में वही क़तार कट जाती और चित्र सिर्फ़ एक चेहरा रह जाता।
-         Wikimedia Commons, File:Marche sel.jpg, सार्वजनिक डोमेन (PD-India)। -->
     <figure class="photo photo--wide reveal">
       <picture>
         <source type="image/webp"
@@ -214,219 +207,206 @@
     </div>
 
     <div>
-      <form class="form" data-demo="doot-done">
-        <noscript>
-          <p class="form-note"><strong>यह फ़ॉर्म भेजने के लिए जावास्क्रिप्ट चालू होनी चाहिए।</strong> यदि यह संदेश दिख रहा है तो आपकी जानकारी सहेजी नहीं जाएगी। कृपया ब्राउज़र में जावास्क्रिप्ट चालू करें, या <a href="mailto:info@loksankalp.org">info@loksankalp.org</a> पर भेज दें।</p>
-        </noscript>
-        <p hidden aria-hidden="true">
-          <label>यह खाली छोड़ें
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </label>
-        </p>
-        <!-- यहाँ fieldset और legend जानबूझकर नहीं हैं।
+      
+<form class="form" data-demo="doot-done">
+  <noscript>
+    <p class="form-note"><strong>यह फ़ॉर्म भेजने के लिए जावास्क्रिप्ट चालू होनी चाहिए।</strong> यदि यह संदेश दिख रहा है तो आपकी जानकारी सहेजी नहीं जाएगी। कृपया ब्राउज़र में जावास्क्रिप्ट चालू करें, या <a href="mailto:info@loksankalp.org">info@loksankalp.org</a> पर भेज दें।</p>
+  </noscript>
 
-             iPhone के Safari में legend एक साधारण खाना नहीं है, उसे फ़ील्डसेट
-             की ऊपरी पट्टी में अलग तरीके से रखा जाता है। उस पर display:block
-             लगाने से वह सिकुड़कर अपनी सबसे छोटी चौड़ाई ले लेता था, और सवाल
-             एक-एक शब्द करके छह पंक्तियों में टूट जाता था, ऊपर बड़ी खाली जगह
-             छोड़कर। Chrome में यह नहीं दिखता, इसलिए पकड़ में देर से आया।
+  <p hidden aria-hidden="true">
+    <label>यह खाली छोड़ें
+      <input type="text" name="website" tabindex="-1" autocomplete="off">
+    </label>
+  </p>
 
-             role="group" के साथ सादा <p> वही काम करता है जो fieldset+legend
-             करते थे : स्क्रीन रीडर तीनों विकल्पों को एक ही सवाल के नीचे
-             पढ़ता है। पर यह हर ब्राउज़र में एक जैसा दिखता है, क्योंकि इसमें
-             कोई विशेष खाना है ही नहीं। -->
-        <div class="field" role="group" aria-labelledby="kshetra-h">
-          <p class="field__head" id="kshetra-h">आप कहाँ से भर रहे हैं?</p>
-          <!-- तीनों पूरी चौड़ाई में, एक के नीचे एक। दो खानों में "भारत का अन्य
-               राज्य" दो पंक्तियों में टूटता था और पंक्तियाँ असमान दिखती थीं। -->
-          <div class="choices choices--wide">
-            <label class="choice"><input type="radio" name="kshetra" value="राजस्थान" checked>राजस्थान</label>
-            <label class="choice"><input type="radio" name="kshetra" value="भारत का अन्य राज्य">भारत का अन्य राज्य</label>
-            <label class="choice"><input type="radio" name="kshetra" value="भारत से बाहर">भारत से बाहर</label>
-          </div>
-        </div>
-        <div class="field">
-          <label for="d-naam">नाम <span aria-hidden="true">*</span></label>
-          <input type="text" id="d-naam" name="naam" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="d-mobile">मोबाइल नंबर <span aria-hidden="true">*</span></label>
-          <input type="tel" id="d-mobile" name="mobile" autocomplete="tel" inputmode="numeric" required>
-        </div>
-        <div class="field">
-          <label for="d-aayu">आयु वर्ग <span aria-hidden="true">*</span></label>
-          <select translate="no" id="d-aayu" name="aayuVarg" required>
-            <option value="">चुनिए</option>
-            <option>15 से 18</option>
-            <option>19 से 25</option>
-            <option>26 से 40</option>
-            <option>41 से 60</option>
-            <option>60 से ऊपर</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="d-bhumika">आप हैं <span aria-hidden="true">*</span></label>
-          <select translate="no" id="d-bhumika" name="bhumika" required>
-            <option value="">चुनिए</option>
-            <option>विद्यार्थी</option>
-            <option>शिक्षक</option>
-            <option>अभिभावक</option>
-            <option>युवा</option>
-            <option>सामाजिक कार्यकर्ता</option>
-            <option>अन्य</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="d-gaon">गाँव / शहर <span aria-hidden="true">*</span></label>
-          <input type="text" id="d-gaon" name="gaon" required>
-        </div>
-        <div class="field" data-show-when="kshetra=राजस्थान">
-          <label for="d-jila">जिला <span aria-hidden="true">*</span></label>
-          <select translate="no" id="d-jila" name="jila" data-req>
-            <option value="">जिला चुनें</option>
-          <option>अजमेर</option>
-          <option>अलवर</option>
-          <option>उदयपुर</option>
-          <option>करौली</option>
-          <option>कोटपूतली-बहरोड़</option>
-          <option>कोटा</option>
-          <option>खैरथल-तिजारा</option>
-          <option>चित्तौड़गढ़</option>
-          <option>चूरू</option>
-          <option>जयपुर</option>
-          <option>जालौर</option>
-          <option>जैसलमेर</option>
-          <option>जोधपुर</option>
-          <option>झालावाड़</option>
-          <option>झुंझुनू</option>
-          <option>टोंक</option>
-          <option>डीग</option>
-          <option>डीडवाना-कुचामन</option>
-          <option>डूंगरपुर</option>
-          <option>दौसा</option>
-          <option>धौलपुर</option>
-          <option>नागौर</option>
-          <option>पाली</option>
-          <option>प्रतापगढ़</option>
-          <option>फलौदी</option>
-          <option>बांसवाड़ा</option>
-          <option>बाड़मेर</option>
-          <option>बारां</option>
-          <option>बालोतरा</option>
-          <option>बीकानेर</option>
-          <option>बूंदी</option>
-          <option>ब्यावर</option>
-          <option>भरतपुर</option>
-          <option>भीलवाड़ा</option>
-          <option>राजसमंद</option>
-          <option>श्रीगंगानगर</option>
-          <option>सलूम्बर</option>
-          <option>सवाई माधोपुर</option>
-          <option>सिरोही</option>
-          <option>सीकर</option>
-          <option>हनुमानगढ़</option>
-          <!-- यहाँ "अन्य" जानबूझकर नहीं है।
+  <div class="field" role="group" aria-labelledby="kshetra-h">
+    <p class="field__head" id="kshetra-h">आप कहाँ से भर रहे हैं?</p>
+    <div class="choices choices--wide">
+      <label class="choice"><input type="radio" name="kshetra" value="राजस्थान" checked>राजस्थान</label>
+      <label class="choice"><input type="radio" name="kshetra" value="भारत का अन्य राज्य">भारत का अन्य राज्य</label>
+      <label class="choice"><input type="radio" name="kshetra" value="भारत से बाहर">भारत से बाहर</label>
+    </div>
+  </div>
 
-               राजस्थान के इकतालीसों जिले ऊपर सूची में हैं, और जो राजस्थान से
-               बाहर का है वह फ़ॉर्म के सबसे ऊपर वाले सवाल से अपना राज्य या देश
-               चुन लेता है। ऐसे में "अन्य" का कोई काम नहीं बचता, उल्टा वही एक
-               रास्ता है जिससे कोई पंक्ति न जिले में गिनी जाती है, न राज्य में,
-               न देश में। 23 सितम्बर को दो पंक्तियाँ इसी रास्ते से निकल गई थीं।
-               यह विकल्प बाकी फ़ॉर्मों पर अब भी है, क्योंकि उन पर ऊपर वाला
-               सवाल नहीं है। -->
-          </select>
-        </div>
+  <div class="field">
+    <label for="d-naam">नाम <span aria-hidden="true"  style="color: red;">*</span></label>
+    <input type="text" id="d-naam" name="naam" autocomplete="name" required>
+  </div>
 
-        <div class="field" data-show-when="kshetra=भारत का अन्य राज्य" hidden>
-          <label for="d-rajya">राज्य <span aria-hidden="true">*</span></label>
-          <select translate="no" id="d-rajya" name="rajya" data-req>
-            <option value="">राज्य चुनें</option>
-              <option>आंध्र प्रदेश</option>
-              <option>अरुणाचल प्रदेश</option>
-              <option>असम</option>
-              <option>बिहार</option>
-              <option>छत्तीसगढ़</option>
-              <option>गोवा</option>
-              <option>गुजरात</option>
-              <option>हरियाणा</option>
-              <option>हिमाचल प्रदेश</option>
-              <option>झारखंड</option>
-              <option>कर्नाटक</option>
-              <option>केरल</option>
-              <option>मध्य प्रदेश</option>
-              <option>महाराष्ट्र</option>
-              <option>मणिपुर</option>
-              <option>मेघालय</option>
-              <option>मिज़ोरम</option>
-              <option>नागालैंड</option>
-              <option>ओडिशा</option>
-              <option>पंजाब</option>
-              <option>सिक्किम</option>
-              <option>तमिलनाडु</option>
-              <option>तेलंगाना</option>
-              <option>त्रिपुरा</option>
-              <option>उत्तर प्रदेश</option>
-              <option>उत्तराखंड</option>
-              <option>पश्चिम बंगाल</option>
-              <option>अंडमान और निकोबार</option>
-              <option>चंडीगढ़</option>
-              <option>दादरा और नगर हवेली तथा दमन और दीव</option>
-              <option>दिल्ली</option>
-              <option>जम्मू और कश्मीर</option>
-              <option>लद्दाख</option>
-              <option>लक्षद्वीप</option>
-              <option>पुडुचेरी</option>
-          </select>
-        </div>
-        <div class="field" data-show-when="kshetra=भारत से बाहर" hidden>
-          <label for="d-desh">देश <span aria-hidden="true">*</span></label>
-          <select translate="no" id="d-desh" name="desh" data-req data-reveals>
-            <option value="">देश चुनें</option>
-              <option>संयुक्त अरब अमीरात</option>
-              <option>अमेरिका</option>
-              <option>सऊदी अरब</option>
-              <option>मलेशिया</option>
-              <option>कुवैत</option>
-              <option>ओमान</option>
-              <option>क़तर</option>
-              <option>ब्रिटेन</option>
-              <option>कनाडा</option>
-              <option>ऑस्ट्रेलिया</option>
-              <option>नेपाल</option>
-              <option>सिंगापुर</option>
-              <option>दक्षिण अफ़्रीका</option>
-              <option>श्रीलंका</option>
-              <option>बहरीन</option>
-              <option>न्यूज़ीलैंड</option>
-              <option>जर्मनी</option>
-              <option>इटली</option>
-              <option>मॉरीशस</option>
-              <option>फ़िजी</option>
-              <option>थाईलैंड</option>
-              <option>म्यांमार</option>
-            <option>अन्य देश</option>
-          </select>
-          <!-- "dubai" लिखकर एक प्रविष्टि अन्य देश में चली गई थी, जबकि
-               संयुक्त अरब अमीरात सूची का पहला ही विकल्प है। लोग देश का नहीं,
-               शहर का नाम सोचते हैं। इसीलिए यह पंक्ति। -->
-          <span class="hint">दुबई, शारजाह या अबू धाबी में हैं तो <strong>संयुक्त अरब अमीरात</strong> चुनिए।</span>
-        </div>
-        <div class="field" data-show-when="d-desh=अन्य देश" hidden>
-          <label for="d-desh-anya">देश का नाम <span aria-hidden="true">*</span></label>
-          <input type="text" id="d-desh-anya" name="deshAnya" data-req aria-describedby="d-desh-anya-hint">
-          <span class="hint" id="d-desh-anya-hint">देश का नाम लिखिए, शहर का नहीं।</span>
-        </div>
-        <div class="field">
-          <label class="choice"><input type="checkbox" name="sahmati" value="हाँ" required>मैंने संकल्प दूत के पाँच संकल्प पढ़े हैं और अपनी क्षमता के अनुसार उन्हें आगे बढ़ाने तथा नशे की सामाजिक स्वीकृति को कम करने में स्वैच्छिक योगदान देने का संकल्प लेता / लेती हूँ।</label>
-        </div>
-        <p class="form-note">18 वर्ष से कम आयु के साथी कृपया अपने अभिभावक या शिक्षक को बताकर ही भरें।</p>
-        <p class="form-note">आपकी जानकारी कहाँ रहती है और कैसे हटवाई जा सकती है, यह <a href="nijta.html">निजता</a> पृष्ठ पर लिखा है।</p>
-        <p class="cluster">
-          <button class="btn btn--primary btn--lg" type="submit">
-            <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-pledge"></use></svg>संकल्प दूत बनें
-          </button>
-        </p>
-      </form>
+  <div class="field">
+    <label for="d-mobile">मोबाइल नंबर <span aria-hidden="true"  style="color: red;">*</span></label>
+    <input type="tel" id="d-mobile" name="mobile" autocomplete="tel" inputmode="numeric" required>
+  </div>
+
+  <div class="field">
+    <label for="d-aayu">आयु वर्ग <span aria-hidden="true"  style="color: red;">*</span></label>
+    <select translate="no" id="d-aayu" name="aayuVarg" required>
+      <option value="">चुनिए</option>
+      <option>15 से 18</option>
+      <option>19 से 25</option>
+      <option>26 से 40</option>
+      <option>41 से 60</option>
+      <option>60 से ऊपर</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="d-bhumika">आप हैं <span aria-hidden="true"  style="color: red;">*</span></label>
+    <select translate="no" id="d-bhumika" name="bhumika" required>
+      <option value="">चुनिए</option>
+      <option>विद्यार्थी</option>
+      <option>शिक्षक</option>
+      <option>अभिभावक</option>
+      <option>युवा</option>
+      <option>सामाजिक कार्यकर्ता</option>
+      <option>अन्य</option>
+    </select>
+  </div>
+
+  <div class="field" data-show-when="kshetra=भारत का अन्य राज्य" hidden>
+    <label for="d-rajya">राज्य <span aria-hidden="true" style="color: red;">*</span></label>
+    <select translate="no" id="d-rajya" name="rajya" data-req>
+      <option value="">राज्य चुनें</option>
+      <option>राजस्थान</option>
+      <option>आंध्र प्रदेश</option>
+      <option>अरुणाचल प्रदेश</option>
+      <option>असम</option>
+      <option>बिहार</option>
+      <option>छत्तीसगढ़</option>
+      <option>गोवा</option>
+      <option>गुजरात</option>
+      <option>हरियाणा</option>
+      <option>हिमाचल प्रदेश</option>
+      <option>झारखंड</option>
+      <option>कर्नाटक</option>
+      <option>केरल</option>
+      <option>मध्य प्रदेश</option>
+      <option>महाराष्ट्र</option>
+      <option>मणिपुर</option>
+      <option>मेघालय</option>
+      <option>मिज़ोरम</option>
+      <option>नागालैंड</option>
+      <option>ओडिशा</option>
+      <option>पंजाब</option>
+      <option>सिक्किम</option>
+      <option>तमिलनाडु</option>
+      <option>तेलंगाना</option>
+      <option>त्रिपुरा</option>
+      <option>उत्तर प्रदेश</option>
+      <option>उत्तराखंड</option>
+      <option>पश्चिम बंगाल</option>
+      <option>अंडमान और निकोबार</option>
+      <option>चंडीगढ़</option>
+      <option>दादरा और नगर हवेली तथा दमन और दीव</option>
+      <option>दिल्ली</option>
+      <option>जम्मू और कश्मीर</option>
+      <option>लद्दाख</option>
+      <option>लक्षद्वीप</option>
+      <option>पुडुचेरी</option>
+    </select>
+  </div>
+
+  <div class="field" data-show-when="kshetra=भारत से बाहर" hidden>
+    <label for="d-desh">देश <span aria-hidden="true"  style="color: red;">*</span></label>
+    <select translate="no" id="d-desh" name="desh" data-req>
+      <option value="">देश चुनें</option>
+      <option>संयुक्त अरब अमीरात</option>
+      <option>अमेरिका</option>
+      <option>सऊदी अरब</option>
+      <option>मलेशिया</option>
+      <option>कुवैत</option>
+      <option>ओमान</option>
+      <option>क़तर</option>
+      <option>ब्रिटेन</option>
+      <option>कनाडा</option>
+      <option>ऑस्ट्रेलिया</option>
+      <option>नेपाल</option>
+      <option>सिंगापुर</option>
+      <option>दक्षिण अफ़्रीका</option>
+      <option>श्रीलंका</option>
+      <option>बहरीन</option>
+      <option>न्यूज़ीलैंड</option>
+      <option>जर्मनी</option>
+      <option>इटली</option>
+      <option>मॉरीशस</option>
+      <option>फ़िजी</option>
+      <option>थाईलैंड</option>
+      <option>म्यांमार</option>
+    </select>
+    <span class="hint">दुबई, शारजाह या अबू धाबी में हैं तो <strong>संयुक्त अरब अमीरात</strong> चुनिए।</span>
+  </div>
+
+  <div class="field">
+    <label for="d-gaon">गाँव / शहर <span aria-hidden="true"  style="color: red;">*</span></label>
+    <input type="text" id="d-gaon" name="gaon" required>
+  </div>
+
+  <div class="field" data-show-when="kshetra=राजस्थान">
+    <label for="d-jila">जिला <span aria-hidden="true"  style="color: red;">*</span></label>
+    <select translate="no" id="d-jila" name="jila" data-req>
+      <option value="">जिला चुनें</option>
+      <option>अजमेर</option>
+      <option>अलवर</option>
+      <option>उदयपुर</option>
+      <option>करौली</option>
+      <option>कोटपूतली-बहरोड़</option>
+      <option>कोटा</option>
+      <option>खैरथल-तिजारा</option>
+      <option>चित्तौड़गढ़</option>
+      <option>चूरू</option>
+      <option>जयपुर</option>
+      <option>जालौर</option>
+      <option>जैसलमेर</option>
+      <option>जोधपुर</option>
+      <option>झालावाड़</option>
+      <option>झुंझुनू</option>
+      <option>टोंक</option>
+      <option>डीग</option>
+      <option>डीडवाना-कुचामन</option>
+      <option>डूंगरपुर</option>
+      <option>दौसा</option>
+      <option>धौलपुर</option>
+      <option>नागौर</option>
+      <option>पाली</option>
+      <option>प्रतापगढ़</option>
+      <option>फलौदी</option>
+      <option>बांसवाड़ा</option>
+      <option>बाड़मेर</option>
+      <option>बारां</option>
+      <option>बालोतरा</option>
+      <option>बीकानेर</option>
+      <option>बूंदी</option>
+      <option>ब्यावर</option>
+      <option>भरतपुर</option>
+      <option>भीलवाड़ा</option>
+      <option>राजसमंद</option>
+      <option>श्रीगंगानगर</option>
+      <option>सलूम्बर</option>
+      <option>सवाई माधोपुर</option>
+      <option>सिरोही</option>
+      <option>सीकर</option>
+      <option>हनुमानगढ़</option>
+    </select>
+  </div>
+
+ <div class="field sahmati-field">
+  <label class="choice sahmati-choice">
+    <input type="checkbox" id="sahmati-checkbox" name="sahmati" value="हाँ" required>
+    <span>मैंने संकल्प दूत के पाँच संकल्प पढ़े हैं और अपनी क्षमता के अनुसार उन्हें आगे बढ़ाने तथा नशे की सामाजिक
+      <p style="margin-left: 35px;"> स्वीकृति को कम करने में स्वैच्छिक योगदान देने का संकल्प लेता / लेती हूँ।</p></span>
+  </label>
+</div>
+
+  <p class="form-note">18 वर्ष से कम आयु के साथी कृपया अपने अभिभावक या शिक्षक को बताकर ही भरें।</p>
+  <p class="form-note">आपकी जानकारी कहाँ रहती है और कैसे हटवाई जा सकती है, यह <a href="nijta.html">निजता</a> पृष्ठ पर लिखा है।</p>
+
+  <p class="cluster">
+    <button class="btn btn--primary btn--lg" type="submit">
+      <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-pledge"></use></svg>संकल्प दूत बनें
+    </button>
+  </p>
+</form>
+
 
       <div id="doot-done" data-cert-scope hidden>
         <div class="callout callout--green mt-2">
@@ -441,10 +421,6 @@
           <p class="mt-2">आज कम से कम <strong>पाँच लोगों</strong> तक लोकसंकल्प का संदेश पहुँचाएँ और उन्हें भी संकल्प दूत बनने के लिए प्रेरित करें।</p>
         </div>
 
-        <!-- व्हाट्सऐप चैनल। यहाँ "आपको जोड़ा जा रहा है" नहीं लिखा जा सकता :
-             चैनल में किसी को जोड़ा नहीं जा सकता, जुड़ना ख़ुद पड़ता है। वैसा
-             लिखने पर आदमी समझता कि काम हो गया, बटन कभी नहीं दबाता, और संदेश
-             उस तक पहुँचते ही नहीं। -->
         <div class="callout mt-2">
           <h3>लोकसंकल्प का व्हाट्सऐप चैनल</h3>
           <p class="mt-2">चैनल से जुड़ जाइए, ताकि लोकसंकल्प के संदेश सीधे आपके व्हाट्सऐप पर आते रहें।</p>
@@ -472,7 +448,7 @@
           <p class="eyebrow">डिजिटल प्रमाण-पत्र</p>
           <h3>संकल्प दूत प्रमाण-पत्र</h3>
           <p class="cert__sub">लोकसंकल्प : नशे की सामाजिक स्वीकृति के विरुद्ध जन-आंदोलन</p>
-          <p class="center" style="margin-inline:auto">यह प्रमाणित किया जाता है कि</p>
+         <p class="cert-intro">यह प्रमाणित किया जाता है कि</p>
           <span class="cert-name" data-slot="naam">आपका नाम</span>
           <p class="cert__place" data-slot="sthan" hidden></p>
           <p class="center" style="margin-inline:auto">ने लोकसंकल्प के उद्देश्यों के प्रति अपनी स्वैच्छिक प्रतिबद्धता व्यक्त करते हुए ‘संकल्प दूत’ के रूप में पंजीकरण किया है।</p>
@@ -483,22 +459,38 @@
           <p class="cert__date" data-regno-row hidden>संकल्प दूत क्रमांक : <span data-slot="regno"></span></p>
         </div>
         <p class="cert__call">बदलाव का इंतज़ार नहीं, बदलाव के वाहक बनें।</p>
-        <p class="cluster cluster--center mt-2">
-          <button class="btn btn--secondary" type="button" data-cert="share" hidden>
-            <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-chat"></use></svg>साझा करें
-          </button>
-          <button class="btn btn--primary" type="button" data-cert="download">
-            <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-download"></use></svg>प्रमाण-पत्र प्राप्त करें
-          </button>
-        </p>
-        <p class="cluster cluster--center mt-2">
-          <button class="btn btn--ghost" type="button" data-cert="facebook">
-            <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-facebook"></use></svg>फेसबुक पर
-          </button>
-          <button class="btn btn--ghost" type="button" data-cert="x">
-            <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-x"></use></svg>ट्विटर पर
-          </button>
-        </p>
+
+
+
+<div class="certificate-actions-row">
+  <button class="btn btn--secondary"
+          type="button"
+          data-cert="share">
+    साझा करें
+  </button>
+
+  <button class="btn btn--primary"
+          type="button"
+          data-cert="download">
+    प्रमाण-पत्र प्राप्त करें
+  </button>
+</div>
+
+
+<div class="certificate-actions-row">
+  <button class="btn btn--ghost"
+          type="button"
+          data-cert="facebook">
+    फेसबुक पर
+  </button>
+
+  <button class="btn btn--ghost"
+          type="button"
+          data-cert="x">
+    ट्विटर पर
+  </button>
+</div>
+
         <p class="form-note center" style="margin-inline:auto">फेसबुक और X पर तस्वीर अपने आप नहीं जाती। पहले प्रमाण-पत्र डाउनलोड कीजिए, फिर पोस्ट में जोड़ लीजिए। फ़ोन पर “साझा करें” से प्रमाण-पत्र सीधा भेजा जा सकता है।</p>
         <p class="center" role="status" data-cert="status"></p>
 
@@ -515,7 +507,7 @@ https://loksankalp.org/sankalp-doot.html</p>
 
 
           <p class="cluster mt-2">
-            <a class="btn btn--wa btn--lg" href="https://wa.me/?text=%E0%A4%AE%E0%A5%88%E0%A4%82%20%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%20%E0%A4%A6%E0%A5%82%E0%A4%A4%20%E0%A4%AC%E0%A4%A8%20%E0%A4%97%E0%A4%AF%E0%A4%BE%2F%E0%A4%97%E0%A4%88%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4%0A%0A%E0%A4%B2%E0%A5%8B%E0%A4%95%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%20%E0%A4%95%E0%A5%87%20%E0%A4%B8%E0%A4%BE%E0%A4%A5%2C%20%E0%A4%A8%E0%A4%B6%E0%A5%87%20%E0%A4%95%E0%A5%80%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9C%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A5%A4%0A%E0%A4%B6%E0%A4%BE%E0%A4%A6%E0%A5%80%20%E0%A4%B9%E0%A5%8B%2C%20%E0%A4%89%E0%A4%A4%E0%A5%8D%E0%A4%B8%E0%A4%B5%20%E0%A4%B9%E0%A5%8B%20%E0%A4%AF%E0%A4%BE%20%E0%A4%B6%E0%A5%8B%E0%A4%95%2C%20%E0%A4%A8%E0%A4%B6%E0%A4%BE%20%E0%A4%AA%E0%A4%B0%E0%A5%8B%E0%A4%B8%E0%A4%A8%E0%A4%BE%20%E0%A4%AC%E0%A4%82%E0%A4%A6%20%E0%A4%B9%E0%A5%8B%E0%A5%A4%0A%0A%E0%A4%86%E0%A4%AA%20%E0%A4%AD%E0%A5%80%20%E0%A4%AC%E0%A4%A8%E0%A4%BF%E0%A4%8F%2C%20%E0%A4%A6%E0%A5%8B%20%E0%A4%AE%E0%A4%BF%E0%A4%A8%E0%A4%9F%20%E0%A4%B2%E0%A4%97%E0%A4%A4%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%0Ahttps%3A%2F%2Floksankalp.org%2Fsankalp-doot.html" target="_blank" rel="noopener">
+            <a class="btn btn--wa btn--lg" href="https://wa.me/?text=%E0%A4%AE%E0%A5%88%E0%A4%82%20%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%20%E0%A4%A6%E0%A5%82%E0%A4%A4%20%E0%A4%AC%E0%A4%A8%20%E0%A4%97%E0%A4%AF%E0%A4%BE%2F%E0%A4%97%E0%A4%88%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4%0A%0A%E0%A4%B2%E0%A5%8B%E0%A4%95%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%20%E0%A4%95%E0%A5%87%20%E0%A4%B8%E0%A4%BE%E0%A4%A5%2C%20%E0%A4%A8%E0%A4%B6%E0%A5%87%20%E0%A4%95%E0%A5%80%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9C%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A5%A4%0A%E0%A4%B6%E0%A4%BE%E0%A4%A6%E0%A5%80%20%E0%A4%B9%E0%A5%8B%2C%20%E0%A4%89%E0%A4%A4%E0%A5%8D%E0%A4%B8%E0%A4%AC%20%E0%A4%B9%E0%A5%8B%20%E0%A4%AF%E0%A4%BE%20%E0%A4%B6%E0%A5%8B%E0%A4%95%2C%20%E0%A4%A8%E0%A4%B6%E0%A4%BE%20%E0%A4%AA%E0%A4%B0%E0%A5%8B%E0%A4%B8%E0%A4%A8%E0%A4%BE%20%E0%A4%AC%E0%A4%82%E0%A4%A6%20%E0%A4%B9%E0%A5%8B%E0%A5%A4%0A%0A%E0%A4%86%E0%A4%AA%20%E0%A4%AD%E0%A5%80%20%E0%A4%AC%E0%A4%A8%E0%A4%BF%E0%A4%8F%2C%20%E0%A4%A6%E0%A5%8B%20%E0%A4%AE%E0%A4%BF%E0%A4%A8%E0%A4%9F%20%E0%A4%B2%E0%A4%97%E0%A4%A4%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%0Ahttps%3A%2F%2Floksankalp.org%2Fsankalp-doot.html" target="_blank" rel="noopener">
               <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-chat"></use></svg>WhatsApp पर भेजिए
             </a>
             <button class="btn btn--ghost" type="button" data-wa-copy hidden>संदेश कॉपी कीजिए</button>
@@ -574,12 +566,11 @@ https://loksankalp.org/sankalp-doot.html</p>
 पंजीकरण निःशुल्क है और दो मिनट लगते हैं।
 https://loksankalp.org/sankalp-doot.html</p>
       <p class="cluster mt-2">
-        <a class="btn btn--wa btn--lg" href="https://wa.me/?text=%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%20%E0%A4%A6%E0%A5%82%E0%A4%A4%20%E0%A4%AC%E0%A4%A8%E0%A4%BF%E0%A4%8F%E0%A5%A4%0A%0A%E0%A4%A8%E0%A4%B6%E0%A4%BE%20%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%87%20%E0%A4%B5%E0%A4%BE%E0%A4%B2%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%20%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%2C%20%E0%A4%A8%E0%A4%B6%E0%A5%87%20%E0%A4%95%E0%A5%8B%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%AF%20%E0%A4%AC%E0%A4%A8%E0%A4%BE%E0%A4%A8%E0%A5%87%20%E0%A4%B5%E0%A4%BE%E0%A4%B2%E0%A5%80%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9C%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A5%A4%0A%E0%A4%85%E0%A4%AA%E0%A4%A8%E0%A5%87%20%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%97%E0%A4%BE%E0%A4%81%E0%A4%B5%20%E0%A4%94%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%AC%E0%A4%A6%E0%A4%B2%E0%A4%BE%E0%A4%B5%20%E0%A4%95%E0%A5%80%20%E0%A4%B6%E0%A5%81%E0%A4%B0%E0%A5%81%E0%A4%86%E0%A4%A4%20%E0%A4%86%E0%A4%AA%20%E0%A4%95%E0%A4%B0%20%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%0A%0A%E0%A4%AA%E0%A4%82%E0%A4%9C%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3%20%E0%A4%A8%E0%A4%BF%E0%A4%83%E0%A4%B6%E0%A5%81%E0%A4%B2%E0%A5%8D%E0%A4%95%20%E0%A4%B9%E0%A5%88%20%E0%A4%94%E0%A4%B0%20%E0%A4%A6%E0%A5%8B%20%E0%A4%AE%E0%A4%BF%E0%A4%A8%E0%A4%9F%20%E0%A4%B2%E0%A4%97%E0%A4%A4%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%0Ahttps%3A%2F%2Floksankalp.org%2Fsankalp-doot.html" target="_blank" rel="noopener">
-          <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-chat"></use></svg>WhatsApp पर भेजिए
-        </a>
-        <button class="btn btn--ghost" type="button" data-wa-copy hidden>संदेश कॉपी कीजिए</button>
-      </p>
-    </div>
+        <a class="btn btn--wa btn--lg" href="https://wa.me/?text=%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%20%E0%A4%A6%E0%A5%82%E0%A4%A4%20%E0%A4%AC%E0%A4%A8%E0%A4%BF%E0%A4%8F%E0%A5%A4%0A%0A%E0%A4%A8%E0%A4%B6%E0%A4%BE%20%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%87%20%E0%A4%B5%E0%A4%BE%E0%A4%B2%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%20%E0%A4%A8%E0%A4%B9%E0%A5%80%E0%A4%82%2C%20%E0%A4%A8%E0%A4%B6%E0%A5%87%20%E0%A4%95%E0%A5%8B%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%AF%20%E0%A4%AC%E0%A4%A8%E0%A4%BE%E0%A4%A8%E0%A5%87%20%E0%A4%B5%E0%A4%BE%E0%A4%B2%E0%A5%80%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9C%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A5%A4%0A%E0%A4%85%E0%A4%AA%E0%A4%A8%E0%A5%87%20%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%97%E0%A4%BE%E0%A4%81%E0%A4%B5%20%E0%A4%94%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%AC%E0%A4%A6%E0%A4%B2%E0%A4%BE%E0%A4%B5%20%E0%A4%95%E0%A5%80%20%E0%A4%B6%E0%A5%81%E0%A4%B0%E0%A5%81%E0%A4%86%E0%A4%A4%20%E0%A4%86%E0%A4%AA%20%E0%A4%95%E0%A4%B0%20%E0%A4%B8%E0%A4%95%E0%A4%A4%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%0A%0A%E0%A4%AA%E0%A4%82%E0%A4%9C%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3%20%E0%A4%A8%E0%A4%BF%E0%A4%83%E0%A4%B6%E0%A5%81%E0%A4%B2%E0%A5%8D%E0%A4%95%20%E0%A4%B9%E0%A5%88%20%E0%A4%B5%E0%A4%BE%E0%A4%B0%20%E0%A4%A6%E0%A5%8B%20%E0%A4%AE%E0%A4%BF%E0%A4%A8%E0%A4%9F%20%E0%A4%B2%E0%A4%97%E0%A4%A4%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%0Ahttps%3A%2F%2Floksankalp.org%2Fsankalp-doot.html" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-chat"></use></svg>WhatsApp पर भेजिए
+      </a>
+      <button class="btn btn--ghost" type="button" data-wa-copy hidden>संदेश कॉपी कीजिए</button>
+    </p>
   </div>
 </section>
 
@@ -638,10 +629,9 @@ https://loksankalp.org/sankalp-doot.html</p>
         </ul>
       </div>
     </div>
-    <!-- बनाने वालों का उल्लेख। टीम ने 23 सितम्बर को स्वयं कहा कि यह जुड़े। -->
     <div class="footer-credit">
       <p class="eyebrow">तकनीकी सहयोग</p>
-      <p>यह वेबसाइट <a href="https://technotaau.com" target="_blank" rel="noopener" lang="en" aria-label="TechnoTaau की वेबसाइट, नई विंडो में खुलेगी">TechnoTaau</a> की टीम ने अभियान के लिए सेवाभाव से बनाई है।</p>
+      <p>यह वेबसाइट <a href="https://technotaau.com" target="_blank" rel="noopener" lang="en" aria-label="TechnoTaau की वेबसाइट, नई विंडो में खुलेगी">TechnoTaau</a> की टीम ने अभियान के लिए सेवाभाव से बनाई है।</p>
     </div>
     <div class="footer-bottom">
       <p>© <span id="year">2026</span> लोकसंकल्प, नशामुक्त समाज हेतु जनआंदोलन।</p>
@@ -660,5 +650,106 @@ https://loksankalp.org/sankalp-doot.html</p>
 
 <script src="js/config.js" defer></script>
 <script src="js/site.js" defer></script>
+
+<script>
+(function () {
+  function setupLocationFields() {
+    const form = document.querySelector('form.form[data-demo="doot-done"]');
+    if (!form) return;
+
+    // मौजूदा क्षेत्र के विकल्प — IDs और selectors वही रखे गए हैं।
+    const fields = [
+      {
+        value: "राजस्थान",
+        selector: '[data-show-when="kshetra=राजस्थान"]'
+      },
+      {
+        value: "भारत का अन्य राज्य",
+        selector: '[data-show-when="kshetra=भारत का अन्य राज्य"]'
+      },
+      {
+        value: "भारत से बाहर",
+        selector: '[data-show-when="kshetra=भारत से बाहर"]'
+      }
+    ];
+
+    // क्षेत्र के अनुसार संबंधित fields दिखाएँ या छिपाएँ।
+    function updateFields() {
+      const selected = form.querySelector('input[name="kshetra"]:checked');
+
+      fields.forEach(function (item) {
+        const field = form.querySelector(item.selector);
+        if (!field) return;
+
+        const show = selected && selected.value === item.value;
+
+        field.hidden = !show;
+        field.style.setProperty(
+          "display",
+          show ? "" : "none",
+          "important"
+        );
+
+        const select = field.querySelector("select");
+
+        if (select) {
+          select.disabled = !show;
+          select.required = !!show;
+
+          if (!show) {
+            select.selectedIndex = 0;
+          }
+        }
+      });
+    }
+
+    // क्षेत्र बदलने पर fields अपडेट करें।
+    form.querySelectorAll('input[name="kshetra"]').forEach(function (radio) {
+      radio.addEventListener("change", updateFields);
+    });
+
+    updateFields();
+
+    /*
+      प्रमाणपत्र के लिए गाँव / शहर का नाम उपलब्ध रखें।
+      मौजूदा form IDs को बदले बिना field पढ़ा जाता है।
+    */
+    function getGaonValue() {
+      const gaonField = form.querySelector(
+        '#d-gaon, [name="gaon"]'
+      );
+
+      return gaonField ? gaonField.value.trim() : "";
+    }
+
+    /*
+      प्रमाणपत्र का URL बनाने के लिए helper।
+      इसे अपने मौजूदा successful-submit redirect में इस्तेमाल करें।
+    */
+    window.lokSankalpCertificateUrl = function (naam, regno, date) {
+      const certificateUrl = new URL(
+        "certificate.html",
+        window.location.href
+      );
+
+      certificateUrl.searchParams.set("naam", naam || "");
+      certificateUrl.searchParams.set("gaon", getGaonValue());
+      certificateUrl.searchParams.set("regno", regno || "");
+      certificateUrl.searchParams.set("date", date || "");
+
+      return certificateUrl.href;
+    };
+  }
+
+  // DOM तैयार होने के बाद script चलाएँ।
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupLocationFields);
+  } else {
+    setupLocationFields();
+  }
+})();
+</script>
+
+
 </body>
 </html>

@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17307a">
+
+  <title>संकल्प दूत प्रमाण-पत्र | लोकसंकल्प</title>
+
+  <!-- मौजूदा वेबसाइट की CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+
+  <!-- हिंदी फ़ॉन्ट -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==================================================
+       प्रमाण-पत्र पेज
+    ================================================== */
+
+    body {
+      background: #f2f4f8;
+    }
+
+    .certificate-page {
+      width: 100%;
+      padding: 18px 0 35px;
+      box-sizing: border-box;
+      font-family: "Noto Sans Devanagari", Mangal, sans-serif;
+    }
+
+    .certificate.certificate--tall {
+      width: calc(100% - 24px);
+      max-width: 780px;
+      margin: 15px auto;
+      padding: 30px 45px;
+      box-sizing: border-box;
+
+      background: #fffdf5;
+      color: #17452f;
+      border: 8px double #1c5739;
+      outline: 2px solid #c79b43;
+      outline-offset: -12px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+      text-align: center;
+      font-family: "Noto Sans Devanagari", Mangal, sans-serif;
+    }
+
+    .cert__crest {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 5px;
+    }
+
+    .cert__mark {
+      display: block;
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .cert__header-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    .certificate--tall .cert__sub-title {
+      margin: 0 0 2px;
+      color: #b35900;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .certificate--tall h3 {
+      margin: 5px 0;
+      color: #1a5232;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .certificate--tall .cert__tagline {
+      margin: 0 0 15px;
+      color: #7b5914;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.8;
+    }
+
+    .certificate--tall p {
+      margin: 8px 0;
+      color: #1a3c2d;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .certificate--tall .cert-name {
+      display: table;
+      max-width: 100%;
+      margin: 10px auto 4px;
+      padding: 4px 25px;
+      box-sizing: border-box;
+
+      overflow-wrap: anywhere;
+      border-bottom: 2px solid #c79b43;
+      color: #1a5232;
+
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .certificate--tall .cert__place {
+      display: block;
+      width: 100%;
+      margin: 3px auto 14px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .certificate--tall .cert__description {
+      margin: 10px auto;
+      padding: 0 10px;
+      text-align: justify;
+      line-height: 1.9;
+    }
+
+    .certificate--tall .cert__motto {
+      display: inline-block;
+      margin: 15px auto;
+      padding: 8px 16px;
+
+      color: #7b5914;
+      background: #fbf6e8;
+      border: 1px solid #e3cc95;
+      border-radius: 25px;
+
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    .certificate--tall .cert__by {
+      margin-top: 15px;
+      color: #2c4a3b;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.9;
+    }
+
+    .cert__footer-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+
+      margin-top: 15px;
+      padding: 0 5px;
+
+      color: #17452f;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cert__footer-meta p {
+      margin: 0;
+    }
+
+    /* प्रमाणपत्र के बटन */
+    .certificate-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      width: 100%;
+      margin: 20px auto;
+      padding: 0 12px;
+      box-sizing: border-box;
+    }
+
+    .certificate-actions-row button {
+      min-height: 44px;
+      padding: 11px 20px;
+
+      border: 0;
+      border-radius: 7px;
+
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .certificate-intro {
+      display: block;
+      width: 100%;
+      text-align: center !important;
+      margin: auto !important;
+      padding: 0 !important;
+      left: auto;
+      right: auto;
+      transform: none;
+    }
+
+    .certificate-actions-row button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .btn-share {
+      background: #17307a;
+      color: #fff;
+    }
+
+    .btn-download {
+      background: #1c5739;
+      color: #fff;
+    }
+
+    .btn-social {
+      background: #e8edf8;
+      color: #17307a;
+    }
+
+    .certificate-actions-row button:hover {
+      filter: brightness(0.92);
+    }
+
+    .certificate-actions-row button:focus-visible {
+      outline: 3px solid #d3a844;
+      outline-offset: 3px;
+    }
+
+    /* ==================================================
+       पाँच लोगों तक संकल्प साझा करने का सेक्शन
+    ================================================== */
+
+    .share-sankalp-section {
+      position: relative;
+      width: calc(100% - 32px);
+      max-width: 780px;
+      margin: 35px auto 45px;
+      padding: 34px 32px;
+      box-sizing: border-box;
+      overflow: hidden;
+
+      background: linear-gradient(145deg, #fff 0%, #f2f6ff 100%);
+      border: 1px solid #dce5f5;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(23, 48, 122, 0.09);
+
+      font-family: "Noto Sans Devanagari", Mangal, sans-serif;
+      text-align: center;
+    }
+
+    .share-sankalp-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #17307a, #4f78d1, #168447);
+    }
+
+    .share-sankalp-section h2 {
+      margin: 0 0 12px;
+      color: #17307a;
+      font-size: 27px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .share-sankalp-section .share-intro {
+      max-width: 580px;
+      margin: 0 auto 24px;
+      color: #536078;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .share-sankalp-section .share-message {
+      position: relative;
+      margin: 0 auto 24px;
+      padding: 24px 26px;
+
+      background: #fff;
+      border: 1px solid #e0e7f3;
+      border-left: 4px solid #17307a;
+      border-radius: 13px;
+      box-shadow: 0 5px 16px rgba(31, 55, 100, 0.05);
+
+      color: #344054;
+      font-size: 15px;
+      line-height: 2;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+
+    .share-sankalp-section .share-message a {
+      display: inline-block;
+      margin-top: 5px;
+      color: #2457bb;
+      font-weight: 700;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .share-sankalp-section .share-message a:hover {
+      color: #168447;
+      text-decoration: underline;
+    }
+
+    .share-sankalp-section .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin-top: 5px;
+    }
+
+    .share-sankalp-section .share-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 210px;
+      min-height: 48px;
+      padding: 13px 22px;
+      box-sizing: border-box;
+
+      border: 1px solid transparent;
+      border-radius: 10px;
+
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-decoration: none;
+
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .share-sankalp-section .whatsapp-btn {
+      background: #168447;
+      color: #fff;
+    }
+
+    .share-sankalp-section .whatsapp-btn:hover {
+      background: #116b39;
+      transform: translateY(-2px);
+    }
+
+    .share-sankalp-section .copy-btn {
+      background: #17307a;
+      color: #fff;
+    }
+
+    .share-sankalp-section .copy-btn:hover {
+      background: #10245d;
+      transform: translateY(-2px);
+    }
+
+    .share-sankalp-section .share-btn:focus-visible {
+      outline: 3px solid #d3a844;
+      outline-offset: 4px;
+    }
+
+    .share-sankalp-section .share-status {
+      min-height: 24px;
+      margin: 16px 0 0;
+      color: #176b3a;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.8;
+    }
+
+    /* मोबाइल स्क्रीन */
+    @media (max-width: 600px) {
+      .certificate.certificate--tall {
+        padding: 28px 18px;
+      }
+
+      .certificate--tall h3 {
+        font-size: 25px;
+      }
+
+      .certificate--tall .cert-name {
+        padding: 4px 12px;
+        font-size: 24px;
+      }
+
+      .certificate--tall .cert__motto {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .certificate--tall .cert__description {
+        padding: 0 3px;
+      }
+
+      .certificate-actions-row {
+        flex-direction: column;
+      }
+
+      .certificate-actions-row button {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .share-sankalp-section {
+        width: calc(100% - 24px);
+        margin: 25px auto 32px;
+        padding: 27px 17px;
+        border-radius: 15px;
+      }
+
+      .share-sankalp-section h2 {
+        font-size: 22px;
+      }
+
+      .share-sankalp-section .share-intro {
+        font-size: 14px;
+      }
+
+      .share-sankalp-section .share-message {
+        padding: 18px 16px;
+        font-size: 14px;
+      }
+
+      .share-sankalp-section .share-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .share-sankalp-section .share-btn {
+        width: 100%;
+        min-width: 0;
+        max-width: 360px;
+      }
+    }
+
+    /* ==================================================
+       PDF/प्रिंट सुधार:
+       केवल प्रमाणपत्र दिखाएँ; शेयर बटन छिपाएँ
+    ================================================== */
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+
+      html,
+      body {
+        width: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+      }
+
+      body * {
+        visibility: hidden !important;
+      }
+
+      .certificate-page {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+      }
+
+      .certificate.certificate--tall,
+      .certificate.certificate--tall * {
+        visibility: visible !important;
+      }
+
+      .certificate.certificate--tall {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 16px 20px !important;
+        box-sizing: border-box !important;
+
+        background: #fffdf5 !important;
+        color: #17452f !important;
+        border: 5px double #1c5739 !important;
+        outline: 1px solid #c79b43 !important;
+        outline-offset: -10px !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+
+        font-family: "Noto Sans Devanagari", Mangal, sans-serif !important;
+
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+      }
+
+      .certificate-actions-row,
+      .share-sankalp-section {
+        display: none !important;
+      }
+
+      .cert__mark {
+        width: 55px !important;
+        height: 55px !important;
+      }
+
+      .certificate--tall h3 {
+        font-size: 27px !important;
+      }
+
+      .certificate--tall .cert-name {
+        font-size: 25px !important;
+      }
+
+      .certificate--tall p,
+      .certificate--tall .cert-name,
+      .certificate--tall .cert__place,
+      .certificate--tall .cert__motto,
+      .certificate--tall .cert__by,
+      .cert__footer-meta {
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="certificate-page">
+
+    <!-- प्रमाणपत्र का मुख्य भाग -->
+    <div class="certificate certificate--tall" data-cert-scope>
+
+      <div class="cert__crest">
+        <img
+          class="cert__mark"
+          src="assets/img/logo-mark.svg"
+          alt="लोकसंकल्प लोगो"
+          width="64"
+          height="64"
+        >
+      </div>
+
+      <div class="cert__header-box">
+        <p class="cert__sub-title">डिजिटल प्रमाण-पत्र</p>
+
+        <h3>संकल्प दूत प्रमाण-पत्र</h3>
+
+        <p class="cert__tagline">
+          लोकसंकल्प : नशे की सामाजिक स्वीकृति के विरुद्ध जन-आंदोलन
+        </p>
+      </div>
+
+      <p class="certificate-intro">यह प्रमाणित किया जाता है कि</p>
+
+      <span class="cert-name" data-slot="naam">नाम उपलब्ध नहीं</span>
+
+      <p class="cert__place" data-slot="sthan"></p>
+
+      <p class="cert__description">
+        ने लोकसंकल्प के उद्देश्यों के प्रति अपनी स्वैच्छिक प्रतिबद्धता
+        व्यक्त करते हुए ‘संकल्प दूत’ के रूप में पंजीयन किया है तथा अपने
+        परिवार और समुदाय में नशे की सामाजिक स्वीकृति को कम करने,
+        सकारात्मक सामाजिक वातावरण को बढ़ावा देने और नशामुक्त समाज
+        के निर्माण में सहयोग करने का संकल्प लिया है।
+      </p>
+
+      <p class="cert__motto">
+        “बदलाव का इंतज़ार नहीं, बदलाव के वाहक बनें।”
+      </p>
+
+      <p class="cert__by">
+        प्रो. श्यामसुंदर ज्याणी<br>
+        संयोजक, नई किरण नशा मुक्ति केंद्र<br>
+        राजकीय डूंगर महाविद्यालय, बीकानेर<br>
+        प्रवर्तक, लोकसंकल्प
+      </p>
+
+      <div class="cert__footer-meta">
+        <p>दिनांक : <span data-slot="date">__________</span></p>
+        <p>क्रमांक : <span data-slot="regno">__________</span></p>
+      </div>
+    </div>
+
+    <!-- प्रमाणपत्र साझा करने और प्राप्त करने के बटन -->
+    <div class="certificate-actions-row">
+      <button class="btn-share" type="button" data-action="share">
+        साझा करें
+      </button>
+
+      <button class="btn-download" type="button" data-action="download">
+        प्रमाण-पत्र प्राप्त करें
+      </button>
+    </div>
+
+    <!-- Facebook और X -->
+    <div class="certificate-actions-row">
+      <button class="btn-social" type="button" data-action="facebook">
+        फेसबुक पर
+      </button>
+
+      <button class="btn-social" type="button" data-action="x">
+        ट्विटर पर
+      </button>
+    </div>
+
+    <!-- पाँच लोगों तक संकल्प पहुँचाने का सेक्शन -->
+    <section class="share-sankalp-section">
+      <h2>अब यह पाँच लोगों तक पहुँचाइए</h2>
+
+      <p class="share-intro">
+        एक संकल्प दूत से अनेक परिवार जुड़ते हैं।
+        नीचे वाला संदेश तैयार है, बस भेजना है।
+      </p>
+
+      <div class="share-message" id="sankalpShareMessage">
+        मैं संकल्प दूत बन गया/गई हूँ।<br><br>
+
+        लोकसंकल्प के साथ, नशे की सामाजिक स्वीकृति के विरुद्ध।<br>
+        शादी हो, उत्सव हो या शोक, नशा परोसना बंद हो।<br><br>
+
+        आप भी बनिए, दो मिनट लगते हैं।<br>
+
+        <a href="https://loksankalp.org/sankalp-doot.html">
+          https://loksankalp.org/sankalp-doot.html
+        </a>
+      </div>
+
+      <div class="share-buttons">
+        <a
+          class="share-btn whatsapp-btn"
+          id="sankalpWhatsAppShare"
+          href="https://wa.me/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp पर भेजिए
+        </a>
+
+        <button
+          class="share-btn copy-btn"
+          type="button"
+          id="sankalpCopyMessage"
+        >
+          संदेश कॉपी कीजिए
+        </button>
+      </div>
+
+      <p
+        class="share-status"
+        id="sankalpShareStatus"
+        role="status"
+        aria-live="polite"
+      ></p>
+    </section>
+
+  </main>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ================================================
+    // 1. URL से प्रमाणपत्र का विवरण पढ़ें
+    // ================================================
+
+    const params = new URLSearchParams(window.location.search);
+
+    const naam = (params.get('naam') || '').trim();
+    const regno = (params.get('regno') || '').trim();
+
+    const sthan = (
+      params.get('sthan') ||
+      params.get('gaon') ||
+      params.get('shahar') ||
+      params.get('shehar') ||
+      params.get('village') ||
+      params.get('city') ||
+      ''
+    ).trim();
+
+    const date = params.get('date') || new Date().toLocaleDateString(
+      'hi-IN',
+      {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }
+    );
+
+    const nameElement = document.querySelector('[data-slot="naam"]');
+    const placeElement = document.querySelector('[data-slot="sthan"]');
+    const dateElement = document.querySelector('[data-slot="date"]');
+    const regElement = document.querySelector('[data-slot="regno"]');
+
+    if (nameElement) {
+      nameElement.textContent = naam || 'नाम उपलब्ध नहीं';
+    }
+
+    if (placeElement) {
+      placeElement.textContent = sthan;
+      placeElement.hidden = !sthan;
+    }
+
+    if (dateElement) {
+      dateElement.textContent = date;
+    }
+
+    if (regElement) {
+      regElement.textContent = regno || 'उपलब्ध नहीं';
+    }
+
+    // ================================================
+    // 2. WhatsApp संदेश तैयार करें
+    // ================================================
+
+    const certificateUrl = window.location.href;
+
+    const shareText =
+      'मैं संकल्प दूत बन गया/गई हूँ।\n' +
+      'लोकसंकल्प के साथ, नशे की सामाजिक स्वीकृति के विरुद्ध।\n' +
+      'शादी हो, उत्सव हो या शोक, नशा परोसना बंद हो।';
+
+    const messageWithLink = shareText + '\n' + certificateUrl;
+
+    const whatsappButton = document.getElementById(
+      'sankalpWhatsAppShare'
+    );
+
+    if (whatsappButton) {
+      whatsappButton.href =
+        'https://wa.me/?text=' + encodeURIComponent(messageWithLink);
+    }
+
+    // ================================================
+    // 3. स्पष्ट PDF के लिए प्रिंट विंडो खोलें
+    // html2canvas की जरूरत नहीं है
+    // ================================================
+
+    const downloadButton = document.querySelector(
+      '[data-action="download"]'
+    );
+
+    if (downloadButton) {
+      downloadButton.addEventListener('click', async function () {
+        const certificate = document.querySelector(
+          '.certificate.certificate--tall'
+        );
+
+        if (!certificate) {
+          alert('प्रमाणपत्र नहीं मिला।');
+          return;
+        }
+
+        const originalText = downloadButton.textContent;
+
+        downloadButton.disabled = true;
+        downloadButton.textContent = 'प्रमाणपत्र तैयार हो रहा है...';
+
+        try {
+          // हिंदी फ़ॉन्ट लोड होने की प्रतीक्षा करें
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+
+          // लोगो को लोड होने का अवसर दें
+          const images = Array.from(
+            certificate.querySelectorAll('img')
+          );
+
+          await Promise.all(images.map(function (img) {
+            if (img.complete) {
+              return Promise.resolve();
+            }
+
+            return new Promise(function (resolve) {
+              img.addEventListener('load', resolve, { once: true });
+              img.addEventListener('error', resolve, { once: true });
+
+              // लोगो न आए तो भी प्रिंट करने दें
+              setTimeout(resolve, 4000);
+            });
+          }));
+
+          downloadButton.disabled = false;
+          downloadButton.textContent = originalText;
+
+          // ब्राउज़र की प्रिंट विंडो खोलें
+          window.print();
+
+        } catch (error) {
+          console.error('प्रिंट त्रुटि:', error);
+
+          alert(
+            'प्रमाणपत्र तैयार नहीं हो सका। ' +
+            'पेज रिफ्रेश करके दोबारा प्रयास करें।'
+          );
+
+        } finally {
+          downloadButton.disabled = false;
+          downloadButton.textContent = originalText;
+        }
+      });
+    }
+
+    // ================================================
+    // 4. प्रमाणपत्र लिंक साझा करें
+    // ================================================
+
+    const shareButton = document.querySelector(
+      '[data-action="share"]'
+    );
+
+    if (shareButton) {
+      shareButton.addEventListener('click', async function () {
+        try {
+          if (navigator.share) {
+            await navigator.share({
+              title: 'संकल्प दूत प्रमाण-पत्र | लोकसंकल्प',
+              text: shareText,
+              url: certificateUrl
+            });
+          } else if (
+            navigator.clipboard &&
+            window.isSecureContext
+          ) {
+            await navigator.clipboard.writeText(certificateUrl);
+            alert('प्रमाणपत्र का लिंक कॉपी हो गया है।');
+          } else {
+            window.prompt(
+              'प्रमाणपत्र का लिंक कॉपी करें:',
+              certificateUrl
+            );
+          }
+        } catch (error) {
+          if (error.name !== 'AbortError') {
+            window.prompt(
+              'प्रमाणपत्र का लिंक कॉपी करें:',
+              certificateUrl
+            );
+          }
+        }
+      });
+    }
+
+    // ================================================
+    // 5. Facebook शेयर
+    // ================================================
+
+    const facebookButton = document.querySelector(
+      '[data-action="facebook"]'
+    );
+
+    if (facebookButton) {
+      facebookButton.addEventListener('click', function () {
+        const url =
+          'https://www.facebook.com/sharer/sharer.php?u=' +
+          encodeURIComponent(certificateUrl);
+
+        window.open(
+          url,
+          '_blank',
+          'noopener,noreferrer,width=700,height=600'
+        );
+      });
+    }
+
+    // ================================================
+    // 6. X (Twitter) शेयर
+    // ================================================
+
+    const xButton = document.querySelector('[data-action="x"]');
+
+    if (xButton) {
+      xButton.addEventListener('click', function () {
+        const url =
+          'https://twitter.com/intent/tweet?text=' +
+          encodeURIComponent(shareText) +
+          '&url=' +
+          encodeURIComponent(certificateUrl);
+
+        window.open(
+          url,
+          '_blank',
+          'noopener,noreferrer,width=700,height=600'
+        );
+      });
+    }
+
+    // ================================================
+    // 7. पाँच लोगों तक पहुँचाने वाला संदेश कॉपी करें
+    // ================================================
+
+    const copyButton = document.getElementById(
+      'sankalpCopyMessage'
+    );
+
+    const shareMessage = document.getElementById(
+      'sankalpShareMessage'
+    );
+
+    const status = document.getElementById(
+      'sankalpShareStatus'
+    );
+
+    if (copyButton && shareMessage && status) {
+      copyButton.addEventListener('click', async function () {
+        const message = shareMessage.innerText.trim();
+
+        try {
+          if (
+            navigator.clipboard &&
+            window.isSecureContext
+          ) {
+            await navigator.clipboard.writeText(message);
+
+          } else {
+            const temporary = document.createElement('textarea');
+
+            temporary.value = message;
+            temporary.setAttribute('readonly', '');
+            temporary.style.position = 'fixed';
+            temporary.style.left = '-9999px';
+
+            document.body.appendChild(temporary);
+            temporary.select();
+
+            const copied = document.execCommand('copy');
+            temporary.remove();
+
+            if (!copied) {
+              throw new Error('Copy failed');
+            }
+          }
+
+          status.textContent =
+            'संदेश कॉपी हो गया। अब आप इसे भेज सकते हैं।';
+
+        } catch (error) {
+          console.error('कॉपी त्रुटि:', error);
+
+          status.textContent =
+            'संदेश कॉपी नहीं हो सका। कृपया संदेश को चुनकर कॉपी करें।';
+        }
+      });
+    }
+
+  })();
+  </script>
+
+</body>
+</html>

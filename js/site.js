@@ -920,17 +920,90 @@
     // The PDF is what people asked for, to keep and to print. The image is
     // what actually travels on WhatsApp, and it is the share button below
     // that sends it, so nothing here needs a second download button.
-    if (dlBtn) dlBtn.addEventListener('click', function () {
-      say('प्रमाणपत्र तैयार हो रहा है…');
-      build().then(function (blob) {
-        if (!blob) throw new Error('no blob');
-        return blob.arrayBuffer().then(function (buf) {
-          save(pdfFromJpeg(new Uint8Array(buf), spec.w, spec.h), stem() + '.pdf');
-          say('प्रमाणपत्र डाउनलोड हो गया।');
-          track('pramanpatra', { form: spec.file || '' });
-        });
-      }).catch(function () { say('प्रमाणपत्र नहीं बन सका। कृपया दोबारा प्रयास करें।'); });
+if (dlBtn) dlBtn.addEventListener('click', function (event) {
+  // केवल मेरा संकल्प प्रमाणपत्र के लिए HTML डिज़ाइन इस्तेमाल करें
+  var scope = dlBtn.closest('[data-cert-scope]');
+  var cert = scope && scope.id === 'sankalp-done'
+    ? scope.querySelector('.sankalp-certificate')
+    : null;
+
+  if (cert) {
+    event.preventDefault();
+
+    var win = window.open('', '_blank');
+    if (!win) {
+      say('पॉप-अप की अनुमति दें और दोबारा प्रयास करें।');
+      return;
+    }
+    var styles = '';
+    document.querySelectorAll('link[rel="stylesheet"], style').forEach(function (el) {
+      styles += el.outerHTML;
     });
+
+    win.document.open();
+    win.document.write(
+      '<!doctype html><html lang="hi"><head>' +
+      '<meta charset="utf-8">' +
+      '<base href="' + document.baseURI + '">' +
+      styles +
+      '<style>' +
+      /* A4 landscape पेज पर प्रमाणपत्र का सही आकार */
+      '@page{size:A4 landscape;margin:8mm}' +
+      'html,body{' +
+      'margin:0!important;' +
+      'padding:0!important;' +
+      'width:100%!important;' +
+      'min-height:0!important;' +
+      'background:#fff!important;' +
+      '}' +
+      'body{' +
+      '-webkit-print-color-adjust:exact!important;' +
+      'print-color-adjust:exact!important;' +
+      '}' +
+      /* मूल प्रमाणपत्र का लेआउट बनाए रखें */
+      '.sankalp-certificate{' +
+      'display:block!important;' +
+      'visibility:visible!important;' +
+      'width:100%!important;' +
+      'max-width:250mm!important;' +
+      'margin:0 auto!important;' +
+      'box-sizing:border-box!important;' +
+      'box-shadow:none!important;' +
+      'transform:none!important;' +
+      '}' +
+      '.sankalp-certificate img{' +
+      'max-width:100%;' +
+      'height:auto;' +
+      '}' +
+      'button{display:none!important}' +
+      '</style></head><body>' +
+      cert.outerHTML +
+      '</body></html>'
+    );
+    win.document.close();
+
+    win.onload = function () {
+      win.setTimeout(function () {
+        win.focus();
+        win.print();
+      }, 1000);
+    };
+    return;
+  }
+
+  // अन्य प्रमाणपत्रों का पुराना डाउनलोड तरीका
+  say('प्रमाणपत्र तैयार हो रहा है…');
+  build().then(function (blob) {
+    if (!blob) throw new Error('no blob');
+    return blob.arrayBuffer().then(function (buf) {
+      save(pdfFromJpeg(new Uint8Array(buf), spec.w, spec.h), stem() + '.pdf');
+      say('प्रमाणपत्र डाउनलोड हो गया।');
+      track('pramanpatra', { form: spec.file || '' });
+    });
+  }).catch(function () {
+    say('प्रमाणपत्र नहीं बन सका। कृपया दोबारा प्रयास करें।');
+  });
+});
 
     /* Facebook and X take a link, never a picture: whatever is posted through
        them carries the campaign page's own preview image, not this person's
@@ -1660,6 +1733,7 @@
       Promise.all(chosen.map(shrink)).then(function (files) {
         // A plain-text body keeps this a "simple" request, so the browser
         // sends no CORS preflight, which Apps Script cannot answer.
+        
         var payload = JSON.stringify({
           form: formName,
           reqId: reqId,
@@ -1668,19 +1742,56 @@
           files: files.filter(Boolean)
         });
         return send(payload, 0);
-      }).then(function (res) {
+      })
+      .then(function (res) {
+        var regNo = res && res.regNo;
+
         form.reset();
-        finish('आपकी जानकारी सुरक्षित रूप से सहेज ली गई है।', res && res.regNo);
+
+        finish(
+          'आपकी जानकारी सुरक्षित रूप से सहेजी गई है।',
+          regNo
+        );
+
         track('form_bhara', { form: outId });
-        if (window.LOKSANKALP_REFRESH_STATS) window.LOKSANKALP_REFRESH_STATS();
-      }).catch(function (err) {
+
+        if (window.LOKSANKALP_REFRESH_STATS) {
+          window.LOKSANKALP_REFRESH_STATS();
+        }
+
+
+if (formName === 'sankalpDoot' && regNo) {
+  var certificateDate = new Date().toLocaleDateString('hi-IN', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  // गाँव/शहर की value certificate ke URL mein bhejein.
+  var certificateUrl = 'certificate.html?naam='
+    + encodeURIComponent(naamValue)
+    + '&regno=' + encodeURIComponent(regNo)
+    + '&date=' + encodeURIComponent(certificateDate)
+    + '&sthan=' + encodeURIComponent(sthanValue || '');
+
+  window.location.href = certificateUrl;
+}
+
+      })
+      .catch(function (err) {
         setStatus(form, err && err.fatal
           ? 'यह फ़ॉर्म अभी सेवा से जुड़ा नहीं है। कृपया थोड़ी देर बाद प्रयास करें, अथवा info@loksankalp.org पर भेज दें।'
           : err && err.slow
             ? 'इंटरनेट धीमा लग रहा है। कृपया दोबारा भेजें।'
             : 'अभी सहेजा नहीं जा सका। कृपया दोबारा भेजें।', 'error');
-      }).then(function () {
-        if (button) { button.disabled = false; if (button.dataset.label) button.textContent = button.dataset.label; }
+      })
+      .then(function () {
+        if (button) {
+          button.disabled = false;
+          if (button.dataset.label) {
+            button.textContent = button.dataset.label;
+          }
+        }
       });
 
       // When a whole classroom presses "भेजें" at the same moment, the script
@@ -1714,3 +1825,4 @@
     });
   });
 })();
+

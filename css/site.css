@@ -1708,7 +1708,7 @@ textarea {
 #panjikaran .form > .field:has(#d-rajya),
 #panjikaran .form > .field:has(#d-desh),
 #panjikaran .form > .field:has(#d-desh-anya) {
-  grid-column: 1 / -1 !important;
+  grid-column: auto !important;
   grid-row: auto !important;
 }
 
@@ -7082,7 +7082,7 @@ fieldset .choices .choice:has(input[type="radio"]:checked) {
   height: 18px !important;
   min-width: 18px !important;
   min-height: 18px !important;
-  margin: .2rem 0 0 0 !important;
+   margin: .2rem 0 0 10px !important;
   padding: 0 !important;
   border: 0 !important;
   outline: none !important;
@@ -10116,73 +10116,1014 @@ body::after {
   margin-right: auto;
 }
 
-.sankalp-form-card {
-  border: 1px solid #c5c5c5;
-  border-radius: 10px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-.sankalp-consent {
-  border: 1px solid #b8b8b8 !important;
-  border-radius: 8px;
-  padding: 14px 16px;
-  width: 100%;
-  box-sizing: border-box;
-  background: #fff;
-}
-.sankalp-consent {
-  width: 100%;
-  border: 1px solid #b8b8b8 !important;
-  border-radius: 8px;
-  padding: 16px 18px !important;
-  margin-top: 12px;
-  box-sizing: border-box;
-  background: #fff;
+
+
+
+body:has(.certificate--tall) .certificate--tall .cert__motto,
+body:has(.certificate--tall) .certificate--tall .cert__by {
+  text-align: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
 }
 
-.sankalp-consent .sankalp-consent-label {
+
+
+body:has(#sankalp-done #cert) #sankalp-done #cert.sankalp-certificate {
+  box-sizing: border-box !important;
+  position: relative !important;
+  isolation: isolate !important;
+  width: calc(100% - 30px) !important;
+  max-width: 620px !important;
+  min-height: 0 !important;
+  margin: 30px auto !important;
+  padding: 38px 34px !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  color: #17452f !important;
+  background: linear-gradient(#fffdf8, #fff) !important;
+  border: 4px solid transparent !important;
+  border-radius: 18px !important;
+  background-image:
+    linear-gradient(#fffdf8, #fff),
+    linear-gradient(135deg, #ff9933 0%, #fff 45%, #138808 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  outline: none !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .12) !important;
+  font-family: "Noto Sans Devanagari", "Mangal", sans-serif !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  inset: 10px !important;
+  border: 1px solid rgba(190, 145, 55, .65) !important;
+  border-radius: 10px !important;
+  pointer-events: none !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .cert__mark {
+  display: block !important;
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain !important;
+  margin: 0 auto 14px !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .eyebrow {
+  color: #b7791f !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  margin: 0 0 8px !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert h3 {
+  color: #173d2b !important;
+  font-size: clamp(25px, 4vw, 34px) !important;
+  line-height: 1.35 !important;
+  font-weight: 800 !important;
+  margin: 0 0 22px !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .center {
+  color: #454545 !important;
+  font-size: 16px !important;
+  line-height: 1.9 !important;
+  margin: 10px auto !important;
+  text-align: center !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .cert-name {
+  display: block !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 18px auto !important;
+  padding: 6px 24px 10px !important;
+  color: #9b5b12 !important;
+  font-size: clamp(24px, 4vw, 32px) !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  border-bottom: 2px solid #d6a84f !important;
+  overflow-wrap: anywhere !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .cert__motto {
+  margin: 22px 0 !important;
+  padding: 13px 12px !important;
+  color: #17633b !important;
+  background: rgba(19, 136, 8, .07) !important;
+  border-left: 4px solid #138808 !important;
+  border-right: 4px solid #ff9933 !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.8 !important;
+  text-align: center !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .cert__by {
+  margin: 22px 0 12px !important;
+  color: #555 !important;
+  font-size: 13px !important;
+  line-height: 1.9 !important;
+  text-align: center !important;
+}
+
+body:has(#sankalp-done #cert) #sankalp-done #cert .cert__date {
+  margin: 18px 0 0 !important;
+  color: #333 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+@media (max-width: 600px) {
+  body:has(#sankalp-done #cert) #sankalp-done #cert {
+    width: calc(100% - 16px) !important;
+    padding: 30px 20px !important;
+    margin: 20px auto !important;
+    border-radius: 14px !important;
+  }
+
+  body:has(#sankalp-done #cert) #sankalp-done #cert::before {
+    inset: 7px !important;
+  }
+
+  body:has(#sankalp-done #cert) #sankalp-done #cert .cert__mark {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  body:has(#sankalp-done #cert) #sankalp-done #cert .center {
+    font-size: 14px !important;
+  }
+
+  body:has(#sankalp-done #cert) #sankalp-done #cert .cert__motto {
+    font-size: 14px !important;
+  }
+
+  body:has(#sankalp-done #cert) #sankalp-done #cert .cert__by {
+    font-size: 12px !important;
+  }
+}
+
+@media print {
+  body:has(#sankalp-done #cert) #sankalp-done #cert {
+    width: 100% !important;
+    max-width: 620px !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+
+#sankalp-done #cert .cert__motto,
+#sankalp-done #cert .cert__by {
+  text-align: center !important;
+  text-align-last: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 18px auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  box-sizing: border-box !important;
+}
+
+#sankalp-done #cert .cert__by br {
+  display: block !important;
+  content: "" !important;
+}
+
+
+form.form[data-demo="doot-done"] {
+  background: #ffffff !important;
+  border: 1px solid #dce5f2 !important;
+  border-top: 5px solid #17307a !important;
+  border-radius: 18px !important;
+  padding: 30px !important;
+  max-width: 760px;
+  margin: 30px auto !important;
+  box-shadow: 0 12px 35px rgba(23, 48, 122, 0.09) !important;
+  box-sizing: border-box;
+}
+
+form.form[data-demo="doot-done"]::before {
+  content: none !important;
+  display: none !important;
+}
+
+form.form[data-demo="doot-done"] .field {
+  background: #f8faff !important;
+  border: 1px solid #e2e9f4 !important;
+  border-radius: 12px !important;
+  padding: 17px !important;
+  margin-bottom: 17px !important;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form.form[data-demo="doot-done"] .field:hover {
+  border-color: #c3d2ec !important;
+}
+
+form.form[data-demo="doot-done"] .field:focus-within {
+  border-color: #9aafd6 !important;
+  box-shadow: 0 0 0 3px rgba(23, 48, 122, 0.05) !important;
+}
+
+form.form[data-demo="doot-done"] .field > label:not(.choice),
+form.form[data-demo="doot-done"] .field__head {
+  display: block;
+  color: #17307a !important;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+form.form[data-demo="doot-done"] input:not([type="radio"]):not([type="checkbox"]),
+form.form[data-demo="doot-done"] select {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  background: #ffffff !important;
+  color: #253858 !important;
+  border: 1px solid #d2dced !important;
+  border-radius: 9px !important;
+  padding: 11px 13px !important;
+  font: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form.form[data-demo="doot-done"] input:focus,
+form.form[data-demo="doot-done"] select:focus {
+  outline: none !important;
+  border-color: #315ba5 !important;
+  box-shadow: 0 0 0 3px rgba(49, 91, 165, 0.10) !important;
+}
+
+form.form[data-demo="doot-done"] .choices--wide {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+form.form[data-demo="doot-done"] .choices--wide .choice {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+  gap: 10px;
+  background: #ffffff !important;
+  border: 1px solid #dce5f2 !important;
+  border-radius: 9px !important;
+  padding: 12px 14px !important;
+  color: #263b5c !important;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+form.form[data-demo="doot-done"] .choices--wide .choice:hover {
+  background: #f0f5ff !important;
+  border-color: #b7c9e7 !important;
+}
+
+form.form[data-demo="doot-done"] .choice {
+  color: #263b5c !important;
+  line-height: 1.8;
+}
+
+form.form[data-demo="doot-done"] input[type="radio"],
+form.form[data-demo="doot-done"] input[type="checkbox"] {
+  accent-color: #17307a;
+  flex-shrink: 0;
+}
+
+form.form[data-demo="doot-done"] .form-note {
+  background: #f4f7fc !important;
+  border: 1px solid #e0e8f5 !important;
+  border-left: 4px solid #315ba5 !important;
+  border-radius: 8px !important;
+  padding: 13px 15px !important;
+  color: #4c5e79 !important;
+  line-height: 1.8;
+  margin: 14px 0;
+}
+
+form.form[data-demo="doot-done"] .hint {
+  display: block;
+  margin-top: 9px;
+  color: #596b85 !important;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+form.form[data-demo="doot-done"] a {
+  color: #204b98 !important;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+form.form[data-demo="doot-done"] .cluster {
+  text-align: center;
+  margin-top: 25px;
+}
+
+form.form[data-demo="doot-done"] button[type="submit"] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  min-height: 50px;
+  padding: 13px 28px;
+  background: #17307a !important;
+  color: #ffffff !important;
+  border: 1px solid #17307a !important;
+  border-radius: 10px !important;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 5px 14px rgba(23, 48, 122, 0.16);
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+form.form[data-demo="doot-done"] button[type="submit"]:hover {
+  background: #10245e !important;
+  box-shadow: 0 7px 18px rgba(23, 48, 122, 0.23);
+}
+
+form.form[data-demo="doot-done"] button[type="submit"] svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  form.form[data-demo="doot-done"] {
+    padding: 16px !important;
+    margin: 18px auto !important;
+    border-radius: 13px !important;
+  }
+
+  form.form[data-demo="doot-done"] .field {
+    padding: 12px !important;
+    margin-bottom: 13px !important;
+  }
+
+  form.form[data-demo="doot-done"] button[type="submit"] {
+    width: 100%;
+  }
+}
+
+form.form[data-demo="doot-done"] [hidden] {
+  display: none !important;
+}
+
+
+
+form.form[data-demo="doot-done"] > .field[data-show-when="kshetra=भारत का अन्य राज्य"],
+form.form[data-demo="doot-done"] > .field[data-show-when="kshetra=भारत से बाहर"] {
+  grid-column: 1 / 2 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  justify-self: start !important;
+  box-sizing: border-box !important;
+}
+
+form.form[data-demo="doot-done"] > .field[data-show-when="kshetra=भारत का अन्य राज्य"] select,
+form.form[data-demo="doot-done"] > .field[data-show-when="kshetra=भारत से बाहर"] select {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+
+form.form[data-demo="doot-done"] > .field:has(input[name="sahmati"]) {
+  background: #fff3e7 !important;
+  border: 2px dotted #f07818 !important;
+  border-radius: 12px !important;
+  padding: 18px 20px !important;
+}
+
+form.form[data-demo="doot-done"] > .field:has(input[name="sahmati"]) label.choice {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+form.form[data-demo="doot-done"] > .field:has(input[name="sahmati"]) input[name="sahmati"] {
+  position: static !important;
+  flex: 0 0 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-self: center !important;
+  accent-color: #d95b00 !important;
+}
+
+form.form[data-demo="doot-done"] button[type="submit"] {
+  background: #c94f00 !important;
+  border-color: #c94f00 !important;
+  color: #fff !important;
+}
+
+form.form[data-demo="doot-done"] button[type="submit"]:hover {
+  background: #a83f00 !important;
+  border-color: #a83f00 !important;
+}
+form.form[data-demo="doot-done"] .sahmati-choice {
+  display: grid !important;
+  grid-template-columns: 20px minmax(0, 1fr) !important;
+  align-items: start !important;
+  justify-content: start !important;
+  column-gap: 8px !important;
+  text-align: left !important;
+}
+
+form.form[data-demo="doot-done"] #sahmati-checkbox {
+  position: relative !important;
+  left: 0 !important;
+  top: 15px !important;
+  transform: none !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  justify-self: start !important;
+  align-self: start !important;
+}
+
+form.form[data-demo="doot-done"] .sahmati-choice span {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  text-align: left !important;
+  margin-left: 10px !important;
+}
+
+
+.certificate-actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px auto;
   width: 100%;
+}
+
+.certificate-actions-row button {
   margin: 0;
-  padding: 0;
+}
+
+@media (max-width: 520px) {
+  .certificate-actions-row {
+    gap: 10px;
+  }
+
+  .certificate-actions-row button {
+    flex: 1 1 140px;
+  }
+}
+
+.cert__actions,
+.certificate-actions,
+.certificate__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cert__actions button,
+.certificate-actions button,
+.certificate__actions button {
+  margin: 0 8px;
+}
+
+
+
+.share-sankalp-section {
+
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border: 1px solid #a5d6a7;
+  border-radius: 22px;
+  padding: 32px 24px;
+  margin: 32px auto;
+  max-width: 900px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(27, 94, 32, 0.12);
   box-sizing: border-box;
 }
 
-.sankalp-consent .sankalp-consent-label input[type="checkbox"] {
-  flex: 0 0 auto;
-  margin: 0;
+
+.share-sankalp-section h2 {
+  color: #1b5e20;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  text-align: center;
 }
 
-.sankalp-consent .sankalp-consent-label span {
-  display: block;
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  line-height: 1.7;
-  text-align: right;
-}
-.sankalp-consent .sankalp-consent-label input[type="checkbox"] {
-  outline: none !important;
-  box-shadow: none !important;
-  accent-color: #198754;
+
+.share-sankalp-section .share-intro {
+  color: #2e5934;
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 650px;
+  margin: 0 auto 24px;
+  text-align: center;
 }
 
-.sankalp-consent .sankalp-consent-label input[type="checkbox"]:focus {
-  outline: none !important;
-  box-shadow: none !important;
+
+.share-sankalp-section .share-message {
+  background: #ffffff;
+  color: #263b2a;
+  border: 1px solid #b7d9bb;
+  border-left: 5px solid #2e7d32;
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin: 0 auto 24px;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 2;
+  text-align: left;
+  overflow-wrap: anywhere;
+  box-shadow: 0 4px 14px rgba(27, 94, 32, 0.07);
+  box-sizing: border-box;
 }
 
-.sankalp-consent .sankalp-consent-label input[type="checkbox"]:focus-visible {
-  outline: 2px solid #888 !important;
-  outline-offset: 2px;
+
+.share-sankalp-section .share-message a {
+  color: #1565c0;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
 }
 
-.sankalp-privacy {
-  text-align: left !important;
-  margin-left: 0 !important;
-  margin-right: auto !important;
+.share-sankalp-section .share-message a:hover {
+  color: #0d47a1;
+}
+
+
+.share-sankalp-section .share-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
   width: 100%;
+  margin: 0 auto;
+}
+
+
+.share-sankalp-section .share-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 13px 24px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.share-sankalp-section .whatsapp-btn {
+  background: #16883e;
+  color: #ffffff;
+  border-color: #16883e;
+  box-shadow: 0 4px 10px rgba(22, 136, 62, 0.2);
+}
+
+.share-sankalp-section .whatsapp-btn:hover {
+  background: #106b30;
+  border-color: #106b30;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 15px rgba(22, 136, 62, 0.25);
+}
+
+
+.share-sankalp-section .copy-btn {
+  background: #ffffff;
+  color: #1b5e20;
+  border-color: #2e7d32;
+}
+
+.share-sankalp-section .copy-btn:hover {
+  background: #2e7d32;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(27, 94, 32, 0.18);
+}
+
+
+.share-sankalp-section .share-btn:focus-visible {
+  outline: 3px solid #f9a825;
+  outline-offset: 4px;
+}
+
+
+.share-sankalp-section .share-status {
+  color: #1b5e20;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
+  margin: 18px auto 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .share-sankalp-section {
+    padding: 24px 15px;
+    margin: 24px auto;
+    border-radius: 16px;
+  }
+
+  .share-sankalp-section .share-intro {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .share-sankalp-section .share-message {
+    padding: 17px 15px;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .share-sankalp-section .share-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .share-sankalp-section .share-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 13px 16px;
+  }
+}
+
+
+
+.sankalp-after-certificate {
+  width: 100%;
+  max-width: 850px;
+  margin: 30px auto 0;
+  padding: 26px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background: linear-gradient(135deg, #edf8ef, #d8efdc);
+  border: 1px solid #b8d9bf;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(27, 94, 32, 0.09);
+}
+
+.sankalp-after-certificate .cert__call {
+  margin: 0 0 10px;
+  color: #1b5e20;
+  font-size: clamp(21px, 3vw, 28px);
+  font-weight: 800;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.sankalp-share-intro {
+  margin: 0 auto 22px;
+  color: #34563a;
+  font-size: 16px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.sankalp-certificate-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  width: 100%;
+  margin: 0 auto 14px;
+}
+
+.sankalp-certificate-actions .btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.6;
+  border-radius: 10px;
+}
+
+.sankalp-after-certificate .sankalp-whatsapp-button {
+  background: #16883e;
+  border-color: #16883e;
+  color: #fff;
+}
+
+.sankalp-after-certificate .sankalp-whatsapp-button:hover {
+  background: #106b30;
+  border-color: #106b30;
+  color: #fff;
+}
+
+.sankalp-friends-actions {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .sankalp-after-certificate {
+    padding: 22px 14px;
+    margin-top: 22px;
+    border-radius: 14px;
+  }
+
+  .sankalp-share-intro {
+    font-size: 15px;
+  }
+
+  .sankalp-certificate-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sankalp-certificate-actions .btn {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+.certificate {
+  width: 90% !important;
+  max-width: 250mm !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
+  overflow: hidden;
+}
+
+.certificate img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.sankalp-consent {
+  background: #fff1df !important;
+  border: 2px dotted #d99a55 !important;
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: none !important;
+}
+
+.sankalp-consent-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.sankalp-consent-label input[type="checkbox"] {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  accent-color: #d97706;
+  flex-shrink: 0;
+  
+}
+
+
+.sankalp-consent {
+  padding-left: 25px !important;
+}
+
+
+
+section[aria-labelledby="sankalp"] figure.certificate {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - 24px);
+  max-width: 620px;
+  box-sizing: border-box;
+  margin: 15px auto;
+  padding: 72px 34px 28px;
+  background: #fffdf5;
+  color: #17452f;
+  border: 8px double #1c5739;
+  outline: 2px solid #c79b43;
+  outline-offset: -12px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: "Noto Sans Devanagari", Mangal, sans-serif;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate {
+  position: relative;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate img.cert__mark {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  object-fit: contain;
+}
+section[aria-labelledby="sankalp"] figure.certificate .cert__mark {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin: 0;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate .eyebrow {
+  margin: 0 0 2px;
+  color: #b35900;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate h3 {
+  margin: 5px 0;
+  color: #1a5232;
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.6;
+  text-align: center;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate p.center {
+  margin: 12px auto;
+  color: #1a3c2d;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate .cert-name {
+  display: table;
+  max-width: 100%;
+  margin: 16px auto 4px;
+  padding: 4px 22px;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  border-bottom: 2px solid #c79b43;
+  color: #1a5232;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate .cert__motto {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 15px auto;
+  padding: 8px 16px;
+  color: #7b5914;
+  background: #fbf6e8;
+  border: 1px solid #e3cc95;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.8;
+  text-align: center;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate .cert__by {
+  margin: 15px auto 0;
+  padding-top: 12px;
+  border-top: 1px solid #e6e1d3;
+  color: #2c4a3b;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.9;
+  text-align: center;
+}
+
+section[aria-labelledby="sankalp"] figure.certificate .cert__date {
+  margin: 15px auto 0;
+  color: #17452f;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.8;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  section[aria-labelledby="sankalp"] figure.certificate {
+    width: calc(100% - 24px);
+    padding: 72px 18px 24px;
+    border-width: 6px;
+  }
+
+  section[aria-labelledby="sankalp"] figure.certificate .cert__mark {
+    top: 23px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  section[aria-labelledby="sankalp"] figure.certificate h3 {
+    font-size: 24px;
+  }
+
+  section[aria-labelledby="sankalp"] figure.certificate .cert-name {
+    font-size: 24px;
+  }
+
+  section[aria-labelledby="sankalp"] figure.certificate .cert__motto {
+    font-size: 12px;
+  }
+}
+
+.certificate.certificate--tall .cert__crest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 15px;
+  text-align: center;
+}
+
+.certificate.certificate--tall .cert__mark {
+  display: block;
+  margin: 0 auto;
+}
+
+.certificate.certificate--tall p.cert-intro {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center !important;
+  margin: 16px auto !important;
+  padding: 0 !important;
+  left: auto;
+  right: auto;
+  transform: none;
+  box-sizing: border-box;
 }
