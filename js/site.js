@@ -1428,7 +1428,13 @@ if (dlBtn) dlBtn.addEventListener('click', function (event) {
           likho();
         };
         likho();
-        if (meraIndex >= PEHLE) more.click();   // अपना जिला छिपा न रह जाए
+       if (meraIndex >= PEHLE) {
+  Array.prototype.forEach.call(box.children, function (li, i) {
+    if (i >= PEHLE && li.classList.contains('jila--mera')) {
+      li.hidden = false;
+    }
+  });
+}  // अपना जिला छिपा न रह जाए
       }
     }
 

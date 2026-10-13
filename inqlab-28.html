@@ -117,7 +117,7 @@
 </section>
 
 <!-- ================= आह्वान ================= -->
-<section class="section">
+<section class="section" style="margin-top: -80px;">
   <div class="wrap split">
     <figure class="photo photo--portrait reveal">
       <picture>
@@ -128,12 +128,12 @@
              alt="शहीद-ए-आज़म भगत सिंह, 1929 का छायाचित्र" width="1112" height="1428"
              fetchpriority="high" decoding="async">
       </picture>
-      <figcaption>शहीद-ए-आज़म भगत सिंह · छायाचित्र 1929</figcaption>
+      <p class="gram-caption" style="margin-bottom: 3px;">शहीद-ए-आज़म भगत सिंह · छायाचित्र 1929</p>
     </figure>
     <div class="stack">
-      <p>शहीद-ए-आज़म भगत सिंह ने अन्याय और सामाजिक बुराइयों के विरुद्ध विचार और साहस की मशाल जलाई। उनकी जयंती पर उसी चेतना को आगे बढ़ाते हुए हज़ारों लोग नशे और उसकी सामाजिक स्वीकृति के विरुद्ध इंकलाब का हिस्सा बने।</p>
-      <p>28 सितम्बर को लोगों ने <strong>सपरिवार उपवास रखा</strong>, अपने गाँव / शहर / संस्था में <strong>‘लोकसंकल्प सभा’</strong> की, और नशा मुक्त समाज का संकल्प लिया।</p>
-      <p class="center" style="margin-inline:auto"><strong>राजस्थान के गाँवों से लेकर देश और दुनिया तक, लोग इसमें जुड़े।</strong></p>
+      <p style="letter-spacing: 1px; margin-top: 35px;" >शहीद-ए-आज़म भगत सिंह ने अन्याय और सामाजिक बुराइयों के विरुद्ध विचार और साहस की मशाल जलाई। उनकी जयंती पर उसी चेतना को आगे बढ़ाते हुए हज़ारों लोग नशे और उसकी सामाजिक स्वीकृति के विरुद्ध इंकलाब का हिस्सा बने।
+      28 सितम्बर को लोगों ने सपरिवार उपवास रखा, अपने गाँव / शहर / संस्था में ‘लोकसंकल्प सभा’ की, और नशा मुक्त समाज का संकल्प लिया।</p>
+      <p class="center" style="margin-inline:auto">राजस्थान के गाँवों से लेकर देश और दुनिया तक, लोग इसमें जुड़े।</p>
       <div class="callout">
         <p>इंकलाब नशे के विरुद्ध।<br>
            इंकलाब नशे की सामाजिक स्वीकृति के विरुद्ध।<br>
@@ -141,16 +141,16 @@
       </div>
     </div>
   </div>
-  <div class="wrap stack">
-    <p class="cluster cluster--center mt-2">
-      <a class="btn btn--primary btn--lg" href="#ginti">
-        <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-users"></use></svg>कितने जुड़े, देखिए
-      </a>
-      <a class="btn btn--ghost btn--lg" href="gram-sabha.html">
-        <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-village"></use></svg>लोकसंकल्प सभा आयोजित करें
-      </a>
-    </p>
+<div class="wrap stack" style="margin-top: 20px;">
+  <div style="display:flex; flex-direction:row; justify-content:center; align-items:center; gap:12px; flex-wrap:nowrap; overflow-x:auto;">
+    <a class="btn btn--primary btn--lg" href="#ginti" style="flex-shrink:0; margin:0;">
+      <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-users"></use></svg>कितने जुड़े, देखिए
+    </a>
+    <a class="btn btn--ghost btn--lg" href="gram-sabha.html" style="flex-shrink:0; margin:0;">
+      <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-village"></use></svg>लोकसंकल्प सभा आयोजित करें
+    </a>
   </div>
+</div>
 </section>
 
 <!-- ================= पंजीकरण ================= -->
@@ -524,7 +524,15 @@ https://loksankalp.org/inqlab-28.html</p>
       <h2 id="jile-h">आपके जिले से कितने जुड़े</h2>
       <p>संख्या उन सब लोगों की है जिन्होंने उस जिले से उपवास का संकल्प दर्ज कराया।</p>
     </div>
-    <ul class="jila-list" data-jila-list></ul>
+    <ul class="jila-list" data-jila-list>
+      
+<div class="jila-more-wrap">
+  <button type="button" class="jile-more-btn" data-jila-more hidden>
+    बाकी जिले भी देखिए
+  </button>
+</div>
+
+    </ul>
     <button class="jila-more" type="button" data-jila-more aria-expanded="false" hidden></button>
     <p class="jila-bahar center" style="margin-inline:auto" data-jila-bache hidden></p>
     <p class="jila-bahar center" style="margin-inline:auto" data-jila-rajya hidden></p>
@@ -540,11 +548,11 @@ https://loksankalp.org/inqlab-28.html</p>
       <p class="send-band__note">आयोजन बीत गया, पर ख़बर बाक़ी है। जितने लोग जुड़े, वही अगले को जोड़ने का सबसे बड़ा कारण है।</p>
       <p class="send-msg" data-share-msg>इंकलाब 28
 
-भगत सिंह जयंती, 28 सितम्बर को हज़ारों परिवारों ने एक दिन का उपवास रखा।
-नशे के विरुद्ध, और नशे की सामाजिक स्वीकृति के विरुद्ध।
+          भगत सिंह जयंती, 28 सितम्बर को हज़ारों परिवारों ने एक दिन का उपवास रखा।
+          नशे के विरुद्ध, और नशे की सामाजिक स्वीकृति के विरुद्ध।
 
-किस जिले से कितने जुड़े, यहाँ देखिए।
-https://loksankalp.org/inqlab-28.html</p>
+          किस जिले से कितने जुड़े, यहाँ देखिए।
+          https://loksankalp.org/inqlab-28.html</p>
       <p class="cluster mt-2">
         <a class="btn btn--wa btn--lg" href="https://wa.me/?text=%E0%A4%87%E0%A4%82%E0%A4%95%E0%A4%B2%E0%A4%BE%E0%A4%AC%2028%0A%0A%E0%A4%AD%E0%A4%97%E0%A4%A4%20%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%B9%20%E0%A4%9C%E0%A4%AF%E0%A4%82%E0%A4%A4%E0%A5%80%2C%2028%20%E0%A4%B8%E0%A4%BF%E0%A4%A4%E0%A4%AE%E0%A5%8D%E0%A4%AC%E0%A4%B0%20%E0%A4%95%E0%A5%8B%20%E0%A4%B9%E0%A4%9C%E0%A4%BC%E0%A4%BE%E0%A4%B0%E0%A5%8B%E0%A4%82%20%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8B%E0%A4%82%20%E0%A4%A8%E0%A5%87%20%E0%A4%8F%E0%A4%95%20%E0%A4%A6%E0%A4%BF%E0%A4%A8%20%E0%A4%95%E0%A4%BE%20%E0%A4%89%E0%A4%AA%E0%A4%B5%E0%A4%BE%E0%A4%B8%20%E0%A4%B0%E0%A4%96%E0%A4%BE%E0%A5%A4%0A%E0%A4%A8%E0%A4%B6%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%2C%20%E0%A4%94%E0%A4%B0%20%E0%A4%A8%E0%A4%B6%E0%A5%87%20%E0%A4%95%E0%A5%80%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9C%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A5%80%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF%20%E0%A4%95%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B0%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A5%A4%0A%0A%E0%A4%95%E0%A4%BF%E0%A4%B8%20%E0%A4%9C%E0%A4%BF%E0%A4%B2%E0%A5%87%20%E0%A4%B8%E0%A5%87%20%E0%A4%95%E0%A4%BF%E0%A4%A4%E0%A4%A8%E0%A5%87%20%E0%A4%9C%E0%A5%81%E0%A4%A1%E0%A4%BC%E0%A5%87%2C%20%E0%A4%AF%E0%A4%B9%E0%A4%BE%E0%A4%81%20%E0%A4%A6%E0%A5%87%E0%A4%96%E0%A4%BF%E0%A4%8F%E0%A5%A4%0Ahttps%3A%2F%2Floksankalp.org%2Finqlab-28.html" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-chat"></use></svg>WhatsApp पर भेजिए
