@@ -149,11 +149,7 @@
   }
 }
 
-</style>
 
-
-<style>
-/*  Center the existing action-button groups without changing content. */
 .cluster.cluster--center {
   width: 100%;
   display: flex !important;
@@ -249,6 +245,7 @@
     padding-inline: 8px;
   }
 }
+
 </style>
 <!-- ================= END UI IMPROVEMENTS ================= -->
 
@@ -267,6 +264,23 @@
       </span>
     </a>
 
+    <div class="desktop-social-icons">
+  <a href="https://whatsapp.com/channel/0029VbDoTmmADTO6lqPeLA1i" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-whatsapp"></use></svg>
+  </a>
+  <a href="https://www.youtube.com/@loksankalp28" target="_blank" rel="noopener" aria-label="YouTube">
+    <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-youtube"></use></svg>
+  </a>
+  <a href="https://www.facebook.com/LokSankalp28" target="_blank" rel="noopener" aria-label="Facebook">
+    <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-facebook"></use></svg>
+  </a>
+  <a href="https://www.instagram.com/loksankalp28" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-instagram"></use></svg>
+  </a>
+  <a href="https://x.com/loksankalp28" target="_blank" rel="noopener" aria-label="X">
+    <svg aria-hidden="true"><use href="assets/img/icons.svg#ic-x"></use></svg>
+  </a>
+</div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
       <svg class="nav-toggle__open" aria-hidden="true"><use href="assets/img/icons.svg#ic-menu"></use></svg>
       <svg class="nav-toggle__close" aria-hidden="true"><use href="assets/img/icons.svg#ic-close"></use></svg>
@@ -302,9 +316,10 @@
     <nav class="crumbs" aria-label="ब्रेडक्रम्ब">
       <ol>
         <li><a href="index.html">होम</a></li>
-        <li>ग्राम/वार्ड लोकसंकल्प सभा</li>
+        <li aria-current="page">ग्राम/वार्ड लोकसंकल्प सभा</li>
       </ol>
     </nav>
+
     <p class="eyebrow">गाँव की सामूहिक पहल</p>
     <h1>ग्राम/वार्ड लोकसंकल्प सभा</h1>
     <p class="lead">गाँव से शुरू होगा परिवर्तन</p>
@@ -342,7 +357,8 @@
       <picture>
         <source type="image/webp" media="(max-width: 760px)" srcset="assets/img/photos/sabha-standing-crowd-760.webp">
         <source type="image/webp" srcset="assets/img/photos/sabha-standing-crowd-1400.webp">
-        <img src="assets/img/photos/sabha-standing-crowd-1400.jpg" alt="शेड के नीचे हरी दरी पर खड़े ग्रामवासी" width="1400" height="931" loading="lazy" decoding="async">
+        <img src="assets/img/photos/sabha-standing-crowd-1400.jpg" alt="शेड के नीचे हरी दरी पर खड़े ग्रामवासी"
+         width="1400" height="931" loading="lazy" decoding="async">
       </picture>
       <p class="gram-caption" style="margin-bottom: 5px;">सभा में ग्रामवासियों की उपस्थिति</p>
     </figure>
@@ -707,5 +723,6 @@
 
 <script src="js/config.js" defer></script>
 <script src="js/site.js" defer></script>
+
 </body>
 </html>

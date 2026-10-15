@@ -1832,3 +1832,58 @@ if (formName === 'sankalpDoot' && regNo) {
   });
 })();
 
+
+
+
+
+(function () {
+  const hero = document.querySelector('.hero--photo');
+  if (!hero) return;
+
+  const slides = hero.querySelectorAll('.hero__slide');
+  const dots = hero.querySelectorAll('.hero__dot');
+
+  if (!slides.length) return;
+
+  let current = 0;
+  let timer;
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === current);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  function startSlider() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      showSlide(current + 1);
+    }, 2000);
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+      startSlider();
+    });
+  });
+
+  slides.forEach(slide => {
+    const img = slide.querySelector('img');
+
+    if (img) {
+      img.addEventListener('error', () => {
+        console.error('Image load nahi hui:', img.src);
+      });
+    }
+  });
+
+  showSlide(0);
+  startSlider();
+})();
